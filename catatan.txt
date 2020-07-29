@@ -1,0 +1,14 @@
+Laporan
+- Laporan KAS
+  Tanggal mulai dan Tanggal Akhir
+
+- Laporan Sekeb
+  Tanggal mulai - akhir
+  Nama Seleb
+
+- Laporan Gudang
+  Tanggal mulai-akhir
+  Nama Gudang
+
+- Laporan Laba / Rugi
+  Tanggal mulai - akhir
