@@ -48,6 +48,8 @@ class UserController extends Controller{
 
     public function post(Request $request){
 
+        // dd($request);
+
         DB::transaction(function() use ($request){
             $nama = $request->nama;
             $username = $request->username;
@@ -57,6 +59,9 @@ class UserController extends Controller{
             $user->nama = $nama;
             $user->username = $username;
             $user->password = $password;
+            $user->tipe = $request->tipe;
+            $user->remember_token = $request->_token;
+            $user->doc = date('Y-m-d H:i:s');
             $user->save();
 
             foreach($request->roles as $row){

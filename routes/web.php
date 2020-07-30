@@ -117,6 +117,14 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('laporan-labarugi-data/{filter}', ['uses' => 'laporan\bLabaRugiController@data', 'as' => 'blabarugi-data']);
     Route::post('laporan-labarugi-cetak', ['uses' => 'laporan\bLabaRugiController@cetak', 'as' => 'blabarugi-cetak']);
 
+    // ROUTE PT YEKAPE SURABAYA
+
+    Route::get('keluar/{id?}', ['uses' => 'umum\KeluarController@link', 'as' => 'keluar-link']);
+    Route::get('keluar-data/{filter}', ['uses' => 'umum\KeluarController@data', 'as' => 'keluar-data']);
+    Route::post('keluar-simpan', ['uses' => 'umum\KeluarController@simpan', 'as' => 'keluar-simpan']);
+    Route::post('keluar-hapus', ['uses' => 'umum\KeluarController@hapus', 'as' => 'keluar-hapus']);
+    Route::post('keluar-cetak', ['uses' => 'umum\KeluarController@cetak', 'as' => 'keluar-cetak']);
+
     // MANAJEMENT USER
     Route::get('data-user', ['uses' => 'UserController@index', 'as' => 'data-user']);
     Route::get('data-user-show', ['uses' => 'UserController@show', 'as' => 'data-user-show']);

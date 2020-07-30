@@ -1,6 +1,6 @@
 @extends('layout')
 @section('title')
-	CV Sejati | {{env('APP_NAME')}}
+	PT. YEKAPE SURABAYA | {{env('APP_NAME')}}
 @endsection
 @section('content')
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">

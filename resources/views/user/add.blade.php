@@ -60,23 +60,8 @@
                                         <label class="col-form-label col-md-2">Tipe User</label>
                                         <div class="col-md-8">
                                             <select class="form-control" name="tipe">
-                                                <option value="dosen">Dosen</option>
-                                                <option value="mahasiswa">Mahasiswa</option>
+                                                <option value="staff">Staff</option>
                                                 <option value="user">User</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group kt-form__group row">
-                                        <label class="col-form-label col-md-2">Mahasiswa</label><br>
-                                        <div class="col-md-8">
-                                            <select class="form-control m-select2 m-input--air" name="mahasiswa" id="mhs_select" required="">
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group kt-form__group row">
-                                        <label class="col-form-label col-md-2">Dosen</label><br>
-                                        <div class="col-md-8">
-                                            <select class="form-control m-select2 m-input--air" name="dosen" id="dosen_select" required="">
                                             </select>
                                         </div>
                                     </div>
@@ -158,80 +143,6 @@
         width: 'resolve',
         multiple:true,
     });
-    $("#mhs_select").select2({
-        placeholder: "Search for Mahasiswa",
-        allowClear: true,
-        minimumInputLength: 3,
-        ajax: {
-            url: "{{route('carimahasiswa-json')}}",
-            dataType: 'json',
-            delay: 250,
-            data: function(params) {
-                return {
-                    q: params.term, // search term
-                    page: params.page
-                };
-            },
-            processResults: function(data, params) {
-                // parse the results into the format expected by Select2
-                // since we are using custom formatting functions we do not need to
-                // alter the remote JSON data, except to indicate that infinite
-                // scrolling can be used
-                params.page = params.page || 1;
-
-                return {
-                    results: $.map(data, function (item) {
-                        return {
-                            text: item.nim + ' - ' + item.nama,
-                            id: item.nim
-                        }
-                    }),
-                    pagination: {
-                        more: (params.page * 30) < data.total_count
-                    }
-                };
-            },
-            cache: true
-        }
-    });
-    $("#dosen_select").select2({
-        placeholder: "Search for Dosen",
-        allowClear: true,
-        minimumInputLength: 3,
-        ajax: {
-            url: "{{route('caridosen-json')}}",
-            dataType: 'json',
-            delay: 250,
-            data: function(params) {
-                return {
-                    q: params.term, // search term
-                    page: params.page
-                };
-            },
-            processResults: function(data, params) {
-                // parse the results into the format expected by Select2
-                // since we are using custom formatting functions we do not need to
-                // alter the remote JSON data, except to indicate that infinite
-                // scrolling can be used
-                params.page = params.page || 1;
-
-                return {
-                    results: $.map(data, function (item) {
-                        return {
-                            text: item.nip + ' - ' + item.nama,
-                            id: item.nim
-                        }
-                    }),
-                    pagination: {
-                        more: (params.page * 30) < data.total_count
-                    }
-                };
-            },
-            cache: true
-        }
-    });
-    
-
 
 </script>
 @endsection
