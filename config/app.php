@@ -230,6 +230,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Datatables'=> Yajra\DataTables\Facades\DataTables::class,
         'PDF' => Elibyy\TCPDF\Facades\TCPDF::class,
+        'timezone' => 'Asia/Jakarta',
+        'locale' => 'id',
+        'faker_locale' => 'id_ID',
 
     ],
 

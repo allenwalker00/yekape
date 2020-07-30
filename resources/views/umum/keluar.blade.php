@@ -105,6 +105,7 @@
 											<th>Keperluan</th>
 											<th>Keterangan</th>
 											<th>Jumlah</th>
+											<th>Menu</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -150,7 +151,7 @@
 									<div class="form-group kt-form__group row">
 										<label class="col-form-label col-md-2">Keperluan</label>
 										<div class="col-md-6">
-											<select class="form-control kt-select2" id="kt_select2_truk" name="id_truk" style="width: 100%">
+											<select class="form-control kt-select2" id="keperluan" name="keperluan" style="width: 100%">
 												<option selected="selected">Pilih Keperluan</option>
 			                                    <option value="PDAM">PDAM</option>
 			                                    <option value="PLN">PLN</option>
@@ -240,6 +241,7 @@
 	            {data: 'keperluan'},
 	            {data: 'keterangan'},
 	            {data: 'jumlah', render: $.fn.dataTable.render.number(',', '.', 0, 'Rp. '), className: 'text-right'},
+	            {data: 'menu', orderable: false, searchable: false},
 	        ],
 	    });
 	    
@@ -251,6 +253,8 @@
 	    });
 	   
 	});
+
+	
 
 </script>
 @endsection

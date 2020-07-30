@@ -30,13 +30,12 @@ class KeluarController extends Controller
     public function data($filter)
     {
         $tmp = explode(';', $filter);
-        $query = Keluar::select('*');
+        $query = Keluar::select('*')->where('batal', 0);
 
         return Datatables::of($query)
                         ->addColumn('menu', function($model) {
-                            $edit = '<a href="' . route("keluar-link", ['id' => $model->id]) . '"><button type="button" class="btn btn-sm btn-warning">Edit</button></a>';
-                            $hapus = '<button type="button" onclick="hapus(' . $model->id . ')" class="btn btn-sm btn-danger">Hapus</button>';
-                            return $edit . ' ' . $hapus;
+                            $hapus = '<a onclick="return confirm(\'Apakah anda yakin untuk membatalkan data ini ?\')"  href="'.route('keluar-hapus', ['id' => $model->id]).'" class="btn btn-sm btn-danger">Hapus</a>';
+                            return $hapus;
                         })
                         ->rawColumns(['menu'])
                         ->make(true);
@@ -45,7 +44,7 @@ class KeluarController extends Controller
 
 
     public function simpan(Request $req){
-        dd($req->all());
+        // dd($req->all());
 
         if($req->tipe == 1){
         	$data = new Keluar;
@@ -53,6 +52,7 @@ class KeluarController extends Controller
             $data->keperluan = strtoupper($req->keperluan);
             $data->keterangan = strtoupper($req->keterangan);
             $data->jumlah = str_replace('.', '', $req->jumlah);
+            $data->doc = date('Y-m-d H:i:s');
             $data->save();
         }else{
 
@@ -61,9 +61,13 @@ class KeluarController extends Controller
         return redirect()->route('keluar-link');
     }
 
-    public function hapus(Request $req){
-        // Keluar::find($req->id)->delete();
-        return response()->json(['hasil' => true]);
+    public function hapus($id){
+        $data = Keluar::find($id);
+        $data->batal = 1;
+        $data->tgl_batal = date('Y-m-d H:i:s');
+        $data->update();
+
+        return redirect()->route('keluar-link')->with(array('status' => 'Data berhasil dihapus', 'alert' => 'success'));
     }
 
     public function cetak(Request $req){
