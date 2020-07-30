@@ -29,8 +29,11 @@ class KeluarController extends Controller
 
     public function data($filter)
     {
-        $tmp = explode(';', $filter);
-        $query = Keluar::select('*')->where('batal', 0);
+        $f = explode(';', $filter);
+
+        $query = Keluar::select('*')
+        		->where('batal', 0)
+        		->WhereBetween('tanggal', [date('Y-m-d',strtotime($f[0])), date('Y-m-d',strtotime($f[1]))]);
 
         return Datatables::of($query)
                         ->addColumn('menu', function($model) {
@@ -74,17 +77,23 @@ class KeluarController extends Controller
 
         // dd($req->all());
 
-        PDF::SetTitle('Data Keluar');
+        $data = Keluar::select('*')
+        		->where('batal', 0)
+        		->WhereBetween('tanggal', [date('Y-m-d',strtotime($req->tgl_start)), date('Y-m-d',strtotime($req->tgl_end))])
+        		->get();
+
+
+        PDF::SetTitle('Rekapitulasi Pengajuan Pembayaran');
         PDF::SetPrintHeader(false);
         PDF::SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-        // PDF::SetMargins(15, 15, 10,20);
+        PDF::SetMargins(15, 15, 15, 15);
         PDF::SetAutoPageBreak(TRUE, 6);
         PDF::setImageScale(PDF_IMAGE_SCALE_RATIO);
         
-        PDF::AddPage('L', 'A4');
+        PDF::AddPage('P', 'A4');
         PDF::SetFont('times', '', 9, '', false);
-        PDF::writeHTML(view('master.cetakkeluar',['data' => $data, 'kab' => $kab, 'kec' => $kec])->render(), true, false, false, false, '');
+        PDF::writeHTML(view('umum.keluarcetak',['data' => $data, 'tgl_start' => $req->tgl_start, 'tgl_end' => $req->tgl_end])->render(), true, false, false, false, '');
         
-        return Response::make(PDF::Output('Data keluar', 'I'), 200, array('Content-Type' => 'application/pdf'));
+        return Response::make(PDF::Output('Rekapitulasi Pengajuan Pembayaran', 'I'), 200, array('Content-Type' => 'application/pdf'));
     }
 }

@@ -78,6 +78,12 @@
 								<div class="kt-portlet__head-actions">
 									<button type="button" class="btn btn-sm btn-brand btn-pill btn-success" id="filter">Tampilkan Data</button>
 								</div>
+								<div class="kt-portlet__head-actions">
+									&nbsp;
+								</div>
+								<div class="kt-portlet__head-actions">
+									<button type="submit" class="btn btn-sm btn-brand btn-pill btn-success">Cetak</button>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -138,7 +144,7 @@
 										<label class="col-form-label col-md-2">Tanggal</label>
 										<div class="col-md-3">
 											<div class="input-group date">
-												<input type="text" class="form-control is-invalid" readonly value="{{$data->tanggal or ''}}" id="kt_datepicker" name="tanggal" required />
+												<input type="text" class="form-control" value="{{$data->tanggal or ''}}" id="kt_datepicker" name="tanggal" required/>
 												<div class="input-group-append">
 													<span class="input-group-text">
 														<i class="la la-calendar"></i>
@@ -151,8 +157,8 @@
 									<div class="form-group kt-form__group row">
 										<label class="col-form-label col-md-2">Keperluan</label>
 										<div class="col-md-6">
-											<select class="form-control kt-select2" id="keperluan" name="keperluan" style="width: 100%">
-												<option selected="selected">Pilih Keperluan</option>
+											<select class="form-control kt-select2" id="keperluan" name="keperluan" style="width: 100%" required>
+												<option value="">Pilih Keperluan</option>
 			                                    <option value="PDAM">PDAM</option>
 			                                    <option value="PLN">PLN</option>
 			                                    <option value="Lain-lain">Lain-lain</option>
@@ -162,13 +168,13 @@
 									<div class="form-group kt-form__group row">
 										<label class="col-form-label col-md-2">Keterangan</label>
 										<div class="col-md-6">
-											<input type="text" style="text-transform: uppercase;" class="form-control kt-input kt-input--air" name="keterangan" value="{{$data->keterangan or ''}}">
+											<input type="text" style="text-transform: uppercase;" class="form-control kt-input kt-input--air" name="keterangan" value="{{$data->keterangan or ''}}" required>
 										</div>
 									</div>
 									<div class="form-group kt-form__group row">
 										<label class="col-form-label col-md-2">Jumlah (Rp)</label>
 										<div class="col-md-3">
-											<input type="text" class="form-control kt-input kt-input--air currency" name="jumlah" id="jumlah">
+											<input type="text" class="form-control kt-input kt-input--air currency" name="jumlah" id="jumlah" required>
 										</div>
 									</div>
 									<div class="form-group kt-form__group row">

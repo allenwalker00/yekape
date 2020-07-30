@@ -212,7 +212,7 @@ License: You must have a valid license purchased only from themeforest(the above
 										</ul>
 									</div>
 								</li> -->
-								<li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-calendar-week"></i></span><span class="kt-menu__link-text">Laporan</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+								<!-- <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-calendar-week"></i></span><span class="kt-menu__link-text">Laporan</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
 									<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
 										<ul class="kt-menu__subnav">
 											<li class="kt-menu__item " aria-haspopup="true"><a href="{{route('bkas-link')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Buku Kas</span></a></li>
@@ -221,7 +221,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											<li class="kt-menu__item " aria-haspopup="true"><a href="{{route('blabarugi-link')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Buku Laba Rugi</span></a></li>
 										</ul>
 									</div>
-								</li>
+								</li> -->
 							</ul>
 						</div>
 					</div>

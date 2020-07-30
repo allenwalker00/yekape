@@ -60,8 +60,8 @@
                                         <label class="col-form-label col-md-2">Tipe User</label>
                                         <div class="col-md-8">
                                             <select class="form-control" name="tipe">
-                                                <option value="staff">Staff</option>
-                                                <option value="user">User</option>
+                                                <option value="Admin">Admin</option>
+                                                <option value="Umum">Bag. Umum</option>
                                             </select>
                                         </div>
                                     </div>
