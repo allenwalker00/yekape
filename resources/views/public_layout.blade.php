@@ -109,7 +109,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 			<div class="kt-header-mobile__logo">
 				<a href="demo2/index.html">
-					<img alt="Logo" src="{{asset('assets/fkunair.png')}}" />
+					<!-- <img alt="Logo" src="{{asset('assets/fkunair.png')}}" /> -->
 				</a>
 			</div>
 			<div class="kt-header-mobile__toolbar">
@@ -132,8 +132,8 @@ License: You must have a valid license purchased only from themeforest(the above
 								<div class="kt-header__brand   kt-grid__item" id="kt_header_brand">
 									<div class="kt-header__brand-logo">
 										<a href="demo2/index.html">
-											<img alt="Logo" src="{{asset('assets/fkunair.png')}}" height="100" class="kt-header__brand-logo-default" />
-											<img alt="Logo" src="{{asset('assets/fkunair.png')}}" height="50" class="kt-header__brand-logo-sticky" />
+											<!-- <img alt="Logo" src="{{asset('assets/fkunair.png')}}" height="100" class="kt-header__brand-logo-default" /> -->
+											<!-- <img alt="Logo" src="{{asset('assets/fkunair.png')}}" height="50" class="kt-header__brand-logo-sticky" /> -->
 										</a>
 									</div>
 								</div>

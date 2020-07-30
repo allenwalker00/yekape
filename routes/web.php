@@ -144,3 +144,6 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('get-childmenu', ['uses' => 'RoleController@get_childmenu', 'as' => 'get-childmenu']);
     
 });
+
+Route::get('pendaftaran/{id?}', ['uses' => 'PendaftaranController@link', 'as' => 'pendaftaran-link']);
+Route::post('pendaftaran-simpan', ['uses' => 'PendaftaranController@simpan', 'as' => 'pendaftaran-simpan']);

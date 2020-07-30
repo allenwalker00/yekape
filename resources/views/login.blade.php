@@ -9,7 +9,7 @@
 
 		<!--end::Base Path -->
 		<meta charset="utf-8" />
-		<title>CV SEJATI MOJOKERTO</title>
+		<title>PT. YEKAPE SURABAYA</title>
 		<meta name="description" content="Login page example">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -80,13 +80,13 @@
 						<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
 							<div class="kt-grid__item kt-grid__item--middle">
 								<h2 class="kt-login__title">Selamat Datang</h2>
-								<h3 class="kt-login__subtitle">CV Sejati Mojokerto</h3>
+								<h3 class="kt-login__subtitle">PT. YEKAPE SURABAYA</h3>
 							</div>
 						</div>
 						<div class="kt-grid__item">
 							<div class="kt-login__info">
 								<div class="kt-login__copyright">
-									&copy 2019 Sistem Manajemen Bisnis
+									&copy 2020 PT. Yekape Surabaya
 								</div>
 							</div>
 						</div>
@@ -111,7 +111,7 @@
 							<!--begin::Signin-->
 							<div class="kt-login__form">
 								<div class="kt-login__title">
-									<h3>Sign In</h3>
+									<h3>Sign In (Admin Only)</h3>
 								</div>
 
 								<!--begin::Form-->
@@ -146,11 +146,52 @@
 								<div class="kt-login__divider">
 									<div class="kt-divider">
 										<span></span>
-										<span>SIM FK</span>
+										<!-- <span>SIM FK</span> -->
 										<span></span>
 									</div>
 								</div>
 								<!--end::Divider-->
+
+								<!--begin::Options-->
+								<!-- <div class="kt-login__options">
+									<a href="" target="_blank" class="btn btn-primary kt-btn">
+										<i class="fa fa-home"></i>
+										Jadwal Ruang
+									</a> -->
+									<!-- <a href="#" class="btn btn-primary kt-btn">
+										<i class="fa fa-home"></i>
+										Jadwal Ruang
+									</a> -->
+									<!-- <a href="#" class="btn btn-info kt-btn">
+										<i class="fab fa-twitter"></i>
+										Twitter
+									</a>
+									<a href="#" class="btn btn-danger kt-btn">
+										<i class="fab fa-google"></i>
+										Google
+									</a> -->
+								<!-- </div> -->
+								<div class="kt-login__options" style="margin-top: 10px;">
+									<a href="{{route('pendaftaran-link')}}" target="_blank" class="btn btn-info kt-btn">
+										<i class="fa fa-list"></i>
+										Pendaftaran Customer
+									</a>
+									<!-- <a href="#" class="btn btn-primary kt-btn">
+										<i class="fa fa-home"></i>
+										Jadwal Ruang
+									</a> -->
+									<!-- <a href="#" class="btn btn-info kt-btn">
+										<i class="fab fa-twitter"></i>
+										Twitter
+									</a>
+									<a href="#" class="btn btn-danger kt-btn">
+										<i class="fab fa-google"></i>
+										Google
+									</a> -->
+								</div>
+
+								<!--end::Options-->
+
 							</div>
 
 							<!--end::Signin-->
