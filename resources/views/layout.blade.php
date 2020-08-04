@@ -173,55 +173,8 @@ License: You must have a valid license purchased only from themeforest(the above
 									<i class="kt-menu__section-icon flaticon-more-v2"></i>
 								</li> -->
 
-								<li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-pencil-ruler"></i></span><span class="kt-menu__link-text">Bagian Umum</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
-									<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-										<ul class="kt-menu__subnav">
-											<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Bagian Umum</span></span></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="{{route('keluar-link')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Pengeluaran Rutin Rumah Tangga</span></a></li>
-										</ul>
-									</div>
-								</li>
+								{!! $menu !!}
 
-								<!-- <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-landmark"></i></span><span class="kt-menu__link-text">Master</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
-									<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-										<ul class="kt-menu__subnav">
-											<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Master</span></span></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="{{route('seleb-link')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Master Seleb</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="{{route('gudang-link')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Master Gudang</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="{{route('truk-link')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Master Truk</span></a></li>
-										</ul>
-									</div>
-								</li>
-
-								<li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-pencil-ruler"></i></span><span class="kt-menu__link-text">Nota Transaksi</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
-									<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-										<ul class="kt-menu__subnav">
-											<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Nota Transaksi</span></span></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="{{route('muat-link')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Nota Muat</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="{{route('bongkar-link')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Nota Bongkar</span></a></li>
-										</ul>
-									</div>
-								</li>
-								<li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-tags"></i></span><span class="kt-menu__link-text">Kas Register</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
-									<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-										<ul class="kt-menu__subnav">
-											<li class="kt-menu__item " aria-haspopup="true"><a href="{{route('kmuat-link')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Kas Muat</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="{{route('kbongkar-link')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Kas Bongkar</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="{{route('kpiutang-link')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Kas Piutang</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="{{route('klain-link')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Kas Lain-lain</span></a></li>
-										</ul>
-									</div>
-								</li> -->
-								<!-- <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-calendar-week"></i></span><span class="kt-menu__link-text">Laporan</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
-									<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-										<ul class="kt-menu__subnav">
-											<li class="kt-menu__item " aria-haspopup="true"><a href="{{route('bkas-link')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Buku Kas</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="{{route('bseleb-link')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Buku Seleb</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="{{route('bgudang-link')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Buku Gudang</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="{{route('blabarugi-link')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Buku Laba Rugi</span></a></li>
-										</ul>
-									</div>
-								</li> -->
 							</ul>
 						</div>
 					</div>

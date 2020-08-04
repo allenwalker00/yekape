@@ -119,6 +119,12 @@ Route::group(['middleware' => ['auth']], function(){
 
     // ROUTE PT YEKAPE SURABAYA
 
+    Route::get('mkeperluan/{id?}', ['uses' => 'umum\MasterKeperluanController@link', 'as' => 'mkeperluan-link']);
+    Route::get('mkeperluan-data', ['uses' => 'umum\MasterKeperluanController@data', 'as' => 'mkeperluan-data']);
+    Route::post('mkeperluan-simpan', ['uses' => 'umum\MasterKeperluanController@simpan', 'as' => 'mkeperluan-simpan']);
+    Route::get('mkeperluan-hapus/{id?}', ['uses' => 'umum\MasterKeperluanController@hapus', 'as' => 'mkeperluan-hapus']);
+    Route::post('mkeperluan-cetak', ['uses' => 'umum\MasterKeperluanController@cetak', 'as' => 'mkeperluan-cetak']);
+
     Route::get('keluar/{id?}', ['uses' => 'umum\KeluarController@link', 'as' => 'keluar-link']);
     Route::get('keluar-data/{filter}', ['uses' => 'umum\KeluarController@data', 'as' => 'keluar-data']);
     Route::post('keluar-simpan', ['uses' => 'umum\KeluarController@simpan', 'as' => 'keluar-simpan']);
