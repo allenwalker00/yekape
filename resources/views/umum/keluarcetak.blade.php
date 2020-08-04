@@ -14,6 +14,9 @@
 	.text-left {
 		text-align: left;
 	}
+	.text-capitalize {
+		text-transform: capitalize;
+	}
 	h2{
 		text-align: center;
 		text-transform:uppercase;
@@ -49,16 +52,20 @@
 	<table border="1" width="100%" cellpadding="3">
 		<tr>
 			<td style="width: 5%; text-align: center; font-weight: bold;">No</td>
-			<td style="width: 10%; text-align: center; font-weight: bold;">Tanggal</td>
-			<td style="width: 70%; text-align: center; font-weight: bold;">Untuk Pembayaran</td>
+			<td style="width: 10%; text-align: center; font-weight: bold;">Tgl Bon</td>
+			<td style="width: 10%; text-align: center; font-weight: bold;">Tgl TerimaBon</td>
+			<td style="width: 20%; text-align: center; font-weight: bold;">Keperluan</td>
+			<td style="width: 40%; text-align: center; font-weight: bold;">Untuk Pembayaran</td>
 			<td style="width: 15%; text-align: center; font-weight: bold;">Jumlah</td>
 		</tr>
 		<?php $n=1; $jml=0;?>
 		@foreach($data as $r)
 		<tr>
-			<td style="width: 5%; text-align: center;">{{$n}}</td>
-			<td style="width: 10%; text-align: center;">{{$r->tanggal}}</td>
-			<td style="width: 70%; text-align: left;">{{$r->keterangan}}</td>
+			<td style="width: 5%; text-align: left;">{{$n}}</td>
+			<td style="width: 10%; text-align: left;">{{$r->tgl_bon}}</td>
+			<td style="width: 10%; text-align: left;">{{$r->tgl_terimabon}}</td>
+			<td style="width: 20%; text-align: left;">{{$r->keperluan->keterangan}}</td>
+			<td style="width: 40%; text-align: left;">{{ucfirst($r->keterangan)}}</td>
 			<td style="width: 15%; text-align: right;">{{number_format($r->jumlah,0,',','.')}}</td>
 		</tr>
 		<?php $n++; $jml+=$r->jumlah;?>

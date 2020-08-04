@@ -9,6 +9,8 @@ use DB;
 use PDF;
 use Response;
 use App\Models\Keluar;
+use App\Models\MasterKeperluan;
+use Auth;
 
 class KeluarController extends Controller
 {
@@ -20,20 +22,29 @@ class KeluarController extends Controller
             $data = Keluar::find($id);
         }
 
-        // $kab = Keluar::distinct()->orderBy('kabupaten', 'ASC')->get(['kabupaten']);
+        $keperluan = MasterKeperluan::get();
 
         // dd($kab);
         
-        return view('umum.keluar', ['data' => $data]);
+        return view('umum.keluar', ['data' => $data, 'keperluan' => $keperluan]);
     }
 
     public function data($filter)
     {
         $f = explode(';', $filter);
 
-        $query = Keluar::select('*')
-        		->where('batal', 0)
-        		->WhereBetween('tanggal', [date('Y-m-d',strtotime($f[0])), date('Y-m-d',strtotime($f[1]))]);
+        if ($f[0] == 0) {
+            $query = Keluar::with('keperluan')
+                    ->select('*')
+                    ->where('batal', 0)
+                    ->WhereBetween('tgl_terimabon', [date('Y-m-d',strtotime($f[0])), date('Y-m-d',strtotime($f[1]))]);
+        }else{
+            $query = Keluar::with('keperluan')
+                    ->select('*')
+                    ->where('batal', 0)
+                    ->where('id_keperluan', $f[0])
+                    ->WhereBetween('tgl_terimabon', [date('Y-m-d',strtotime($f[0])), date('Y-m-d',strtotime($f[1]))]);
+        }
 
         return Datatables::of($query)
                         ->addColumn('menu', function($model) {
@@ -51,10 +62,13 @@ class KeluarController extends Controller
 
         if($req->tipe == 1){
         	$data = new Keluar;
-            $data->tanggal = date('Y-m-d', strtotime($req->tanggal));
-            $data->keperluan = strtoupper($req->keperluan);
-            $data->keterangan = strtoupper($req->keterangan);
+            $data->tgl_bon = date('Y-m-d', strtotime($req->tgl_bon));
+            $data->tgl_terimabon = date('Y-m-d', strtotime($req->tgl_terimabon));
+            $data->id_keperluan = $req->keperluan;
+            // $data->keterangan = ucwords($req->keterangan);
+            $data->keterangan = $req->keterangan;
             $data->jumlah = str_replace('.', '', $req->jumlah);
+            $data->user_entry = Auth::user()->username;
             $data->doc = date('Y-m-d H:i:s');
             $data->save();
         }else{
@@ -77,10 +91,20 @@ class KeluarController extends Controller
 
         // dd($req->all());
 
-        $data = Keluar::select('*')
-        		->where('batal', 0)
-        		->WhereBetween('tanggal', [date('Y-m-d',strtotime($req->tgl_start)), date('Y-m-d',strtotime($req->tgl_end))])
-        		->get();
+        if($req->f_keperluan == 0){
+            $data = Keluar::select('*')
+                    ->where('batal', 0)
+                    ->WhereBetween('tgl_terimabon', [date('Y-m-d',strtotime($req->tgl_start)), date('Y-m-d',strtotime($req->tgl_end))])
+                    ->get();
+        }else{
+            $data = Keluar::select('*')
+                    ->where('batal', 0)
+                    ->where('id_keperluan', $req->f_keperluan)
+                    ->WhereBetween('tgl_terimabon', [date('Y-m-d',strtotime($req->tgl_start)), date('Y-m-d',strtotime($req->tgl_end))])
+                    ->get();
+        }
+
+        
 
 
         PDF::SetTitle('Rekapitulasi Pengajuan Pembayaran');

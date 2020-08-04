@@ -10,11 +10,7 @@ class Keluar extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
 
-    // public function kaspiutang(){
-    //     return $this->hasMany('App\Models\KasPiutang', 'id_seleb', 'id_seleb');
-    // }
-
-    // public function muat(){
-    //     return $this->hasMany('App\Models\Muat', 'id_seleb', 'id_seleb');
-    // }
+    public function keperluan(){
+        return $this->belongsTo('App\Models\MasterKeperluan', 'id_keperluan', 'id');
+    }
 }
