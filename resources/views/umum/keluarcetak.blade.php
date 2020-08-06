@@ -20,18 +20,30 @@
 	h2{
 		text-align: center;
 		text-transform:uppercase;
+		line-height: 0.8;
+	}
+	h4{
+		text-align: left;
+		line-height: 0.8;
 	}
 	.break-page{
 		page-break-before: always;
 	}
 </style>
 <body>
+	<h4>PT. YEKAPE SURABAYA</h4>
+	<h4>Jl. Wijaya Kusuma No. 36</h4>
+	<h4><u>Surabaya</u></h4>
+
+	<br>&nbsp;
+	<br>&nbsp;
+
 	<h2>REKAPITULASI</h2>
 	<h2>PENGAJUAN PEMBAYARAN</h2>
 	<br>&nbsp;
 	<br>&nbsp;
 
-	<table border="0" width="100%" cellpadding="3">
+	<table border="0" width="100%" cellpadding="1">
 		<tr>
 			<td style="width: 15%; text-align: left;">Bagian/Bidang</td>
 			<td style="width: 3%; text-align: center;">:</td>
@@ -44,7 +56,6 @@
 		</tr>
 	</table>
 	
-	<br>&nbsp;
 	<br>&nbsp;
 	<br>&nbsp;
 
@@ -76,6 +87,9 @@
 		</tr>
 	</table>
 
+	<br>&nbsp;
+	<br>&nbsp;
+	<h4>Terbilang : {{terbilang($jml)}} rupiah</h4>
 	<br>&nbsp;
 	<br>&nbsp;
 	<br>&nbsp;

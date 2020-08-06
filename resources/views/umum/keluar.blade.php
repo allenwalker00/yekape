@@ -97,7 +97,7 @@
 										<label class="col-form-label col-md-2">Tanggal Bon</label>
 										<div class="col-md-3">
 											<div class="input-group date">
-												<input type="text" class="form-control kt_datepicker" value="{{$data->tgl_bon or ''}}" id="tgl_bon" name="tgl_bon" required/>
+												<input type="text" class="form-control {{$data!=null? '' : 'kt_datepicker'}}" value="{{$data->tgl_bon or ''}}" id="tgl_bon" name="tgl_bon" required/>
 												<div class="input-group-append">
 													<span class="input-group-text">
 														<i class="la la-calendar"></i>
@@ -110,7 +110,7 @@
 										<label class="col-form-label col-md-2">Tanggal Terima Bon</label>
 										<div class="col-md-3">
 											<div class="input-group date">
-												<input type="text" class="form-control kt_datepicker" value="{{$data->tgl_terimabon or ''}}" id="tgl_terimabon" name="tgl_terimabon" required/>
+												<input type="text" class="form-control {{$data!=null? '' : 'kt_datepicker'}}" value="{{$data->tgl_terimabon or ''}}" id="tgl_terimabon" name="tgl_terimabon" required/>
 												<div class="input-group-append">
 													<span class="input-group-text">
 														<i class="la la-calendar"></i>
@@ -125,7 +125,11 @@
 											<select class="form-control kt-select2" id="keperluan" name="keperluan" style="width: 100%" required>
 												<option value="">Pilih Keperluan</option>
 			                                    @foreach($keperluan as $r)
+			                                    @if($data != null && $data->id_keperluan == $r->id)
+			                                    	<option value="{{$r->id}}" selected="">{{$r->keterangan}}</option>
+			                                    @else
 			                                    	<option value="{{$r->id}}">{{$r->keterangan}}</option>
+			                                    @endif
 			                                    @endforeach
 											</select>
 										</div>
@@ -139,7 +143,7 @@
 									<div class="form-group kt-form__group row">
 										<label class="col-form-label col-md-2">Jumlah (Rp)</label>
 										<div class="col-md-3">
-											<input type="text" class="form-control kt-input kt-input--air currency" name="jumlah" id="jumlah" required>
+											<input type="text" class="form-control kt-input kt-input--air currency" name="jumlah" id="jumlah" value="{{$data->jumlah or ''}}" required {{$data == null ? "" : "readonly" }}>
 										</div>
 									</div>
 									<div class="form-group kt-form__group row">
@@ -209,7 +213,7 @@
 				</div>
 			</form>
 
-			<form class="modal fade" id="modal_update" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" method="post" action="{{route('keluar-update')}}" target="_blank">
+			<!-- <form class="modal fade" id="modal_update" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" method="post" action="{{route('keluar-simpan')}}" target="_blank">
 			<input type="hidden" name="_token" value="{{csrf_token()}}">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
@@ -277,7 +281,7 @@
 						</div>
 					</div>
 				</div>
-			</form>
+			</form> -->
 		</div>
 		<!--end::Portlet-->
 	</div>
@@ -297,7 +301,7 @@
 @section('js')
 <!--begin::Page Vendors -->
 <script type="text/javascript">
-
+	var s;
 	$(document).ready(function () {
 		$("#tambah").click(function(){
 			$("#data").addClass('kt-hide');
@@ -339,16 +343,16 @@
 	            {data: 'menu', orderable: false, searchable: false},
 	        ],
 
-	        @if ( Auth::user()->tipe == 'Admin')
-	        	"columnDefs": [ {
-		            "targets": 3,
-			            render: function (data, type, row, meta){
-							var $select = $("<select class='pilihan form-control kt-select2' id='pilihan'><option value='0'>--Pilihan--</option>@foreach($keperluan as $r)<option value='{{$r->id}}'>{{$r->keterangan}}</option>@endforeach</select>");
-						  	$select.find('option[value="'+row.id_keperluan+'"]').attr('selected', 'selected');
+	     //    @if ( Auth::user()->tipe == 'Admin')
+	     //    	"columnDefs": [ {
+		    //         "targets": 3,
+			   //          render: function (data, type, row, meta){
+						// 	var $select = $("<select class='pilihan form-control kt-select2' id='pilihan'><option value='0'>--Pilihan--</option>@foreach($keperluan as $r)<option value='{{$r->id}}'>{{$r->keterangan}}</option>@endforeach</select>");
+						//   	$select.find('option[value="'+row.id_keperluan+'"]').attr('selected', 'selected');
 
-							return $select[0].outerHTML
-						}
-		        } ],
+						// 	return $select[0].outerHTML
+						// }
+		    //     } ],
 		        // "columnDefs": [ {
 		        //     "targets": -1,
 		        //     "data": null,
@@ -358,15 +362,18 @@
 	        
 	    });
 
-	    $('#tabel tbody').on( 'click', 'button', function () {
-	        let td = $(this).closest('tr').find('td');
-			let result = {
-				id_keperluan: td.get(2).innerText
-			};
-			console.log(result[0])
+	  //   $('#tabel tbody').on( 'click', 'button', function () {
+	  //       let td = $(this).closest('tr').find('td');
+			// let result = {
+			// 	tgl: td.get(0).innerText,
+			// 	id_keperluan: td.get(2).innerText
+			// };
+			// console.log(result[0])
 
-			alert(result.id_keperluan);
-	    } );
+			// // var s = result.id_keperluan;
+			// alert(result.tgl);
+	  //   } );
+
 	    
 	    $("#filter").click(function(){
 	    	// alert($('#tgl_start').val());
@@ -380,44 +387,26 @@
 	   
 	});
 
-	function update(id){
-		alert(id);
-		// var data = table.row( $('#tabel tbody').parents('tr') ).data();
-		// alert(data[0]);
-		// alert(id);
-
-		// var $tr = $(this).closest('tr');
-    	
-    	let td = $('#tabel tbody').closest('tr').find('td');
-		let result = {
-			id_keperluan: td.get(2).innerText
-		};
-		// console.log(result[0])
-
-		alert(result.id_keperluan);
-
-
-		// var token = '{{csrf_token()}}';
-  //       $.ajax({
-  //           url: "{{route('keluar-update')}}",
-  //           type: 'GET',
-  //           headers: {'X-CSRF-TOKEN': token},
-  //           data: {id: id},
-  //           cache: false,
+	// function update(id){
+	// 	var token = '{{csrf_token()}}';
+ //        $.ajax({
+ //            url: "",
+ //            type: 'GET',
+ //            headers: {'X-CSRF-TOKEN': token},
+ //            data: {id: id},
+ //            cache: false,
             
-  //           success: function (result) {
-  //           	// $("#mtgl_bon").val() = result.data.tgl_bon;
-  //   //             $.each( result.data, function( key, value ) {
-  //               	// alert(result.harga);
-		// 		//  	$("#mdetail").append(
-		// 		//  		'<tr><td>'+value.seleb.nama_seleb+'</td><td>'+value.berat+'</td><td>'+value.harga+'</td><td>'+value.rp_tagihan+'</td></tr>');
-		// 		// });
-		// 		$("#modal_update").modal('show');
-  //           }
-
-  //           // $("#modal_update").modal('show');
-  //       });
-    }
+ //            success: function (result) {
+ //    //         	$("#mdetail").empty();
+ //    //             $.each( result.data, function( key, value ) {
+ //    //             	// alert(value.harga);
+	// 			//  	$("#mdetail").append(
+	// 			//  		'<tr><td>'+value.seleb.nama_seleb+'</td><td>'+value.berat+'</td><td>'+value.harga+'</td><td>'+value.rp_tagihan+'</td></tr>');
+	// 			// });
+	// 			$("#modal_update").modal('show');
+ //            }
+ //        });
+ //    }
 	
 
 </script>

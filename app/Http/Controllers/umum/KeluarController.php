@@ -17,13 +17,12 @@ class KeluarController extends Controller
     public function link($id = null)
     {
         if($id == null){
-            $data = null;
-            $keperluan = MasterKeperluan::get();
-            return view('umum.keluar', ['data' => $data, 'keperluan' => $keperluan]);
+            $data = null;            
         }else{
             $data = Keluar::find($id);
-            return response()->json(['data' => $data]);
-        }   
+        }
+        $keperluan = MasterKeperluan::get();
+        return view('umum.keluar', ['data' => $data, 'keperluan' => $keperluan]);
     }
 
     public function data($filter)
@@ -48,12 +47,13 @@ class KeluarController extends Controller
                             $hapus = '<a onclick="return confirm(\'Apakah anda yakin untuk membatalkan data ini ?\')"  href="'.route('keluar-hapus', ['id' => $model->id]).'" class="flaticon-delete"></a>';
                             // $update = '<a onclick="return confirm(\'Apakah anda yakin untuk membatalkan data ini ?\')"  href="'.route('keluar-update', ['id' => $model->id, 'id_keperluan' => $model->id_keperluan]).'" class="flaticon-edit"></a>';
                             
-                            $recid = $model->id . '.' . $model->id_keperluan;
-                            
-                            $update = '<a onclick="update(' . $recid . ')"  class="flaticon-edit"></a>';
+                            // $recid = $model->id . '.' . $model->id_keperluan;
+
+                            // $update = '<a onclick="update(' . $recid . ')"  class="flaticon-edit" data-toggle="modal"></a>';
+                            $edit = '<a href="' . route("keluar-link", ['id' => $model->id]) . '"><i class="flaticon-edit"></i></a>';
                             
                             if (Auth::user()->tipe == 'Admin') {
-                                return $hapus . '    ' . $update;
+                                return $hapus . '' . $edit;
                             }else{
                                 return $hapus;
                             }
@@ -65,7 +65,7 @@ class KeluarController extends Controller
 
 
     public function simpan(Request $req){
-        dd($req->all());
+        // dd($req->all());
 
         if($req->tipe == 1){
         	$data = new Keluar;
@@ -79,7 +79,10 @@ class KeluarController extends Controller
             $data->doc = date('Y-m-d H:i:s');
             $data->save();
         }else{
-
+            $data = Keluar::find($req->id);
+            $data->id_keperluan = $req->keperluan;
+            $data->keterangan = $req->keterangan;
+            $data->save();
         }
         
         return redirect()->route('keluar-link');
@@ -94,15 +97,15 @@ class KeluarController extends Controller
         return redirect()->route('keluar-link')->with(array('status' => 'Data berhasil dihapus', 'alert' => 'success'));
     }
 
-    public function update(Request $req){
-        // dd($req->all());
+    // public function detail(Request $req){
+    //     // dd($req->all());
 
-        $data = Keluar::find($req->id);
+    //     $data = Keluar::find($req->id);
 
-        // dd($data);
-        // return redirect()->route('keluar-link')->with(array('status' => 'Data berhasil dihapus', 'alert' => 'success'));
-        return response()->json(['data' => $data]);
-    }
+    //     // dd($data);
+    //     // return redirect()->route('keluar-link')->with(array('status' => 'Data berhasil dihapus', 'alert' => 'success'));
+    //     return response()->json(['data' => $data]);
+    // }
 
     public function cetak(Request $req){
 
