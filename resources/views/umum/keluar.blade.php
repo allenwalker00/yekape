@@ -43,65 +43,22 @@
 										<i class="la la-plus"></i>
 										Tambah
 									</button>
+									<button class="btn btn-brand btn-elevate btn-icon-sm btn-sm btn-success" id="b_filter" data-toggle="modal">
+										Filter / Cetak
+									</button>
 									<!-- <button type="submit" class="btn btn-sm btn-info" id="cetak">Cetak Laporan</button> -->
 								</div>
 							</div>
 						</div>
 					</div>
-				<form class="kt-form kt-form--fit kt-form--label-align-right" method="post" action="{{route('keluar-cetak')}}" target="_blank">
-				<input type="hidden" name="_token" value="{{csrf_token()}}">
-					<div class="kt-portlet__head kt-portlet__head--lg">
-						<div class="kt-portlet__head-label">
-							<div class="col-md-6">
-								<select class="form-control kt-select2" id="f_keperluan" name="f_keperluan" style="width: 100%">
-									<option value="0">Pilih Keperluan (Semua)</option>
-	                                @foreach($keperluan as $r)
-	                                	<option value="{{$r->id}}">{{$r->keterangan}}</option>
-	                                @endforeach
-								</select>
-							</div>
-							<div class="col-md-4">
-								<div class="input-group date">
-									<input type="text" class="form-control kt_datepicker" value="{{date('Y-m-d')}}" placeholder="Select date" id="tgl_start" name="tgl_start">
-									<div class="input-group-append">
-										<span class="input-group-text">
-											<i class="la la-calendar"></i>
-										</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="input-group date">
-									<input type="text" class="form-control kt_datepicker" value="{{date('Y-m-d')}}" placeholder="Select date" id="tgl_end" name="tgl_end">
-									<div class="input-group-append">
-										<span class="input-group-text">
-											<i class="la la-calendar"></i>
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="kt-portlet__head-toolbar">
-							<div class="kt-portlet__head-wrapper">
-								<div class="kt-portlet__head-actions">
-									<button type="button" class="btn btn-sm btn-brand btn-pill btn-success" id="filter">Tampilkan Data</button>
-								</div>
-								<div class="kt-portlet__head-actions">
-									&nbsp;
-								</div>
-								<div class="kt-portlet__head-actions">
-									<button type="submit" class="btn btn-sm btn-brand btn-pill btn-success">Cetak</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					</form>
+					
 					<div class="kt-portlet__body">
 						<div class="kt-section" id="data-prodi">
 							<div class="kt-section__content">
 								<table class="table table-striped- table-bordered table-hover table-checkable" id="tabel">
 									<thead>
 										<tr>
+											<th>ID</th>
 											<th>Tgl Bon</th>
 											<th>Tgl TerimaBon</th>
 											<th>Keperluan</th>
@@ -198,6 +155,129 @@
 					</div>
 				</div>
 			</div>
+			<form class="modal fade" id="modal_filter" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" method="post" action="{{route('keluar-cetak')}}" target="_blank">
+			<input type="hidden" name="_token" value="{{csrf_token()}}">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="">Filter</h5>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<div class="col-md-12">
+									<div class="form-group kt-form__group row">
+										<label class="col-form-label col-md-4">Keperluan</label>
+										<div class="col-md-8">
+											<select class="form-control kt-select2" id="f_keperluan" name="f_keperluan" style="width: 100%">
+												<option value="">Pilih Keperluan (Semua)</option>
+			                                    @foreach($keperluan as $r)
+			                                    	<option value="{{$r->id}}">{{$r->keterangan}}</option>
+			                                    @endforeach
+											</select>
+										</div>
+									</div>
+									<div class="form-group kt-form__group row">
+										<label class="col-form-label col-md-4">Tanggal Terima Bon</label>
+										<div class="col-md-8">
+											<div class="input-group date">
+												<input type="text" class="form-control kt_datepicker" value="{{date('Y-m-d')}}" id="tgl_start" name="tgl_start" required/>
+												<div class="input-group-append">
+													<span class="input-group-text">
+														<i class="la la-calendar"></i>
+													</span>
+												</div>
+											</div>
+											<div class="input-group date">
+												<input type="text" class="form-control kt_datepicker" value="{{date('Y-m-d')}}" id="tgl_end" name="tgl_end" required/>
+												<div class="input-group-append">
+													<span class="input-group-text">
+														<i class="la la-calendar"></i>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-sm btn-brand btn-info" id="filter">Tampilkan Data</button>
+							<button type="submit" class="btn btn-sm btn-success">Cetak</button>
+							<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<form class="modal fade" id="modal_update" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" method="post" action="{{route('keluar-update')}}" target="_blank">
+			<input type="hidden" name="_token" value="{{csrf_token()}}">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="">Update Data</h5>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<div class="col-md-12">
+									<div class="form-group kt-form__group row">
+										<label class="col-form-label col-md-4">Tanggal Bon</label>
+										<div class="col-md-8">
+											<div class="input-group date">
+												<input type="text" class="form-control kt_datepicker" value="{{$data->tgl_bon or ''}}" id="mtgl_bon" name="mtgl_bon" readonly />
+												<div class="input-group-append">
+													<span class="input-group-text">
+														<i class="la la-calendar"></i>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-group kt-form__group row">
+										<label class="col-form-label col-md-4">Tanggal Terima Bon</label>
+										<div class="col-md-8">
+											<div class="input-group date">
+												<input type="text" class="form-control kt_datepicker" value="{{$data->tgl_terimabon or ''}}" id="mtgl_terimabon" name="mtgl_terimabon" readonly/>
+												<div class="input-group-append">
+													<span class="input-group-text">
+														<i class="la la-calendar"></i>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-group kt-form__group row">
+										<label class="col-form-label col-md-4">Keperluan</label>
+										<div class="col-md-6">
+											<select class="form-control kt-select2" id="mkeperluan" name="mkeperluan" style="width: 100%" required>
+												<option value="">Pilih Keperluan</option>
+			                                    @foreach($keperluan as $r)
+			                                    	<option value="{{$r->id}}">{{$r->keterangan}}</option>
+			                                    @endforeach
+											</select>
+										</div>
+									</div>
+									<div class="form-group kt-form__group row">
+										<label class="col-form-label col-md-4">Keterangan</label>
+										<div class="col-md-6">
+											<textarea class="form-control" id="mketerangan" name="mketerangan" rows="8" readonly>{{$data->keterangan or ''}}</textarea>
+										</div>
+									</div>
+									<div class="form-group kt-form__group row">
+										<label class="col-form-label col-md-4">Jumlah (Rp)</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control kt-input kt-input--air currency" name="mjumlah" id="mjumlah" readonly>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-sm btn-success">Simpan</button>
+							<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</form>
 		</div>
 		<!--end::Portlet-->
 	</div>
@@ -224,6 +304,11 @@
 			$("#form").removeClass('kt-hide');
 		});
 
+		$("#b_filter").click(function(){
+			// alert('A');
+			$("#modal_filter").modal('show');
+		});
+
 		$(".currency").keyup(function() {
 			var rp = formatRupiah(this.value);
 			$(this).val(rp);
@@ -238,13 +323,14 @@
 		});
 
 		$('.kt-select2').select2();
-		
-		$('#tabel').DataTable({
+
+		var x = $('#tabel').DataTable({
 			"responsive": true,
 	        "processing": true,
 	        "serverSide": true,
 	        "ajax": "{{ route('keluar-data',['filter' => '0;'.date('Y-m-d').';'.date('Y-m-d')]) }}",
 	        "columns": [
+	            {data: 'id', visible: false},
 	            {data: 'tgl_bon'},
 	            {data: 'tgl_terimabon'},
 	            {data: 'keperluan.keterangan'},
@@ -252,17 +338,86 @@
 	            {data: 'jumlah', render: $.fn.dataTable.render.number(',', '.', 0, 'Rp. '), className: 'text-right'},
 	            {data: 'menu', orderable: false, searchable: false},
 	        ],
+
+	        @if ( Auth::user()->tipe == 'Admin')
+	        	"columnDefs": [ {
+		            "targets": 3,
+			            render: function (data, type, row, meta){
+							var $select = $("<select class='pilihan form-control kt-select2' id='pilihan'><option value='0'>--Pilihan--</option>@foreach($keperluan as $r)<option value='{{$r->id}}'>{{$r->keterangan}}</option>@endforeach</select>");
+						  	$select.find('option[value="'+row.id_keperluan+'"]').attr('selected', 'selected');
+
+							return $select[0].outerHTML
+						}
+		        } ],
+		        // "columnDefs": [ {
+		        //     "targets": -1,
+		        //     "data": null,
+		        //     "defaultContent": "<button>Click!</button>"
+	        	// } ]
+	        @endif
+	        
 	    });
+
+	    $('#tabel tbody').on( 'click', 'button', function () {
+	        let td = $(this).closest('tr').find('td');
+			let result = {
+				id_keperluan: td.get(2).innerText
+			};
+			console.log(result[0])
+
+			alert(result.id_keperluan);
+	    } );
 	    
 	    $("#filter").click(function(){
 	    	// alert($('#tgl_start').val());
 	    	var url = "{{ url('keluar-data') }}/" + $('#f_keperluan').val() + ";" + $('#tgl_start').val() + ";" + $('#tgl_end').val();
 	    	// alert(url);
 			$('#tabel').DataTable().ajax.url(url).load();
+			$("#modal_filter").modal('hide');
+
+
 	    });
 	   
 	});
 
+	function update(id){
+		alert(id);
+		// var data = table.row( $('#tabel tbody').parents('tr') ).data();
+		// alert(data[0]);
+		// alert(id);
+
+		// var $tr = $(this).closest('tr');
+    	
+    	let td = $('#tabel tbody').closest('tr').find('td');
+		let result = {
+			id_keperluan: td.get(2).innerText
+		};
+		// console.log(result[0])
+
+		alert(result.id_keperluan);
+
+
+		// var token = '{{csrf_token()}}';
+  //       $.ajax({
+  //           url: "{{route('keluar-update')}}",
+  //           type: 'GET',
+  //           headers: {'X-CSRF-TOKEN': token},
+  //           data: {id: id},
+  //           cache: false,
+            
+  //           success: function (result) {
+  //           	// $("#mtgl_bon").val() = result.data.tgl_bon;
+  //   //             $.each( result.data, function( key, value ) {
+  //               	// alert(result.harga);
+		// 		//  	$("#mdetail").append(
+		// 		//  		'<tr><td>'+value.seleb.nama_seleb+'</td><td>'+value.berat+'</td><td>'+value.harga+'</td><td>'+value.rp_tagihan+'</td></tr>');
+		// 		// });
+		// 		$("#modal_update").modal('show');
+  //           }
+
+  //           // $("#modal_update").modal('show');
+  //       });
+    }
 	
 
 </script>

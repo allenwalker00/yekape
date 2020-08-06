@@ -129,6 +129,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('keluar-data/{filter}', ['uses' => 'umum\KeluarController@data', 'as' => 'keluar-data']);
     Route::post('keluar-simpan', ['uses' => 'umum\KeluarController@simpan', 'as' => 'keluar-simpan']);
     Route::get('keluar-hapus/{id?}', ['uses' => 'umum\KeluarController@hapus', 'as' => 'keluar-hapus']);
+    Route::post('keluar-update', ['uses' => 'umum\KeluarController@update', 'as' => 'keluar-update']);
     Route::post('keluar-cetak', ['uses' => 'umum\KeluarController@cetak', 'as' => 'keluar-cetak']);
 
     // MANAJEMENT USER

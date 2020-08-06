@@ -18,15 +18,12 @@ class KeluarController extends Controller
     {
         if($id == null){
             $data = null;
+            $keperluan = MasterKeperluan::get();
+            return view('umum.keluar', ['data' => $data, 'keperluan' => $keperluan]);
         }else{
             $data = Keluar::find($id);
-        }
-
-        $keperluan = MasterKeperluan::get();
-
-        // dd($kab);
-        
-        return view('umum.keluar', ['data' => $data, 'keperluan' => $keperluan]);
+            return response()->json(['data' => $data]);
+        }   
     }
 
     public function data($filter)
@@ -37,19 +34,29 @@ class KeluarController extends Controller
             $query = Keluar::with('keperluan')
                     ->select('*')
                     ->where('batal', 0)
-                    ->WhereBetween('tgl_terimabon', [date('Y-m-d',strtotime($f[0])), date('Y-m-d',strtotime($f[1]))]);
+                    ->WhereBetween('tgl_terimabon', [date('Y-m-d',strtotime($f[1])), date('Y-m-d',strtotime($f[2]))]);
         }else{
             $query = Keluar::with('keperluan')
                     ->select('*')
                     ->where('batal', 0)
                     ->where('id_keperluan', $f[0])
-                    ->WhereBetween('tgl_terimabon', [date('Y-m-d',strtotime($f[0])), date('Y-m-d',strtotime($f[1]))]);
+                    ->WhereBetween('tgl_terimabon', [date('Y-m-d',strtotime($f[1])), date('Y-m-d',strtotime($f[2]))]);
         }
 
         return Datatables::of($query)
                         ->addColumn('menu', function($model) {
-                            $hapus = '<a onclick="return confirm(\'Apakah anda yakin untuk membatalkan data ini ?\')"  href="'.route('keluar-hapus', ['id' => $model->id]).'" class="btn btn-sm btn-danger">Hapus</a>';
-                            return $hapus;
+                            $hapus = '<a onclick="return confirm(\'Apakah anda yakin untuk membatalkan data ini ?\')"  href="'.route('keluar-hapus', ['id' => $model->id]).'" class="flaticon-delete"></a>';
+                            // $update = '<a onclick="return confirm(\'Apakah anda yakin untuk membatalkan data ini ?\')"  href="'.route('keluar-update', ['id' => $model->id, 'id_keperluan' => $model->id_keperluan]).'" class="flaticon-edit"></a>';
+                            
+                            $recid = $model->id . '.' . $model->id_keperluan;
+                            
+                            $update = '<a onclick="update(' . $recid . ')"  class="flaticon-edit"></a>';
+                            
+                            if (Auth::user()->tipe == 'Admin') {
+                                return $hapus . '    ' . $update;
+                            }else{
+                                return $hapus;
+                            }
                         })
                         ->rawColumns(['menu'])
                         ->make(true);
@@ -58,7 +65,7 @@ class KeluarController extends Controller
 
 
     public function simpan(Request $req){
-        // dd($req->all());
+        dd($req->all());
 
         if($req->tipe == 1){
         	$data = new Keluar;
@@ -85,6 +92,16 @@ class KeluarController extends Controller
         $data->update();
 
         return redirect()->route('keluar-link')->with(array('status' => 'Data berhasil dihapus', 'alert' => 'success'));
+    }
+
+    public function update(Request $req){
+        // dd($req->all());
+
+        $data = Keluar::find($req->id);
+
+        // dd($data);
+        // return redirect()->route('keluar-link')->with(array('status' => 'Data berhasil dihapus', 'alert' => 'success'));
+        return response()->json(['data' => $data]);
     }
 
     public function cetak(Request $req){
