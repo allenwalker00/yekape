@@ -200,6 +200,10 @@
 									<div class="form-group kt-form__group row">
 										<label class="col-form-label col-md-2">&nbsp;</label>
 										<div class="col-md-6">
+											<button type="button" class="btn btn-brand btn-elevate btn-icon-sm" id="addList">
+												<i class="la la-plus"></i>
+												Add
+											</button>
 											<button type="submit" class="btn btn-success">Simpan</button>
 											<a href="{{route('muat-link')}}"><button type="button" id="kembali" class="btn btn-secondary">Kembali</button></a>
 										</div>

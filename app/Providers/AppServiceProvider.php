@@ -38,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
             //menu sesuai role
             $bef = '';
             foreach($aa as $row){
+                // dd($row);
                 if($row->tipe == 0){
                     if($bef == 2){
                         $html .= '</ul></div></li>';
@@ -79,6 +80,7 @@ class AppServiceProvider extends ServiceProvider
                     $bef = $row->tipe;
 
                 }elseif($row->tipe == 2){
+                    // dd($bef);
                     if($bef == 4){
                         $html .= '</ul></div></li>';
                     }

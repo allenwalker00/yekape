@@ -72,7 +72,7 @@
 		<?php $n=1; $jml=0;?>
 		@foreach($data as $r)
 		<tr>
-			<td style="width: 5%; text-align: left;">{{$n}}</td>
+			<td style="width: 5%; text-align: center;">{{$n}}</td>
 			<td style="width: 10%; text-align: left;">{{$r->tgl_bon}}</td>
 			<td style="width: 10%; text-align: left;">{{$r->tgl_terimabon}}</td>
 			<td style="width: 20%; text-align: left;">{{$r->keperluan->keterangan}}</td>
@@ -94,7 +94,7 @@
 	<br>&nbsp;
 	<br>&nbsp;
 
-	<table border="0" width="100%" cellpadding="2">
+	<table border="0" width="100%" cellpadding="2" style="page-break-after: always; page-break-before: auto;">
 		<tr>
 			<td style="width: 30%; text-align: center;"></td>
 			<td style="width: 40%; text-align: center;"></td>

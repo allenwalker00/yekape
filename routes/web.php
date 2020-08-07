@@ -118,7 +118,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('laporan-labarugi-cetak', ['uses' => 'laporan\bLabaRugiController@cetak', 'as' => 'blabarugi-cetak']);
 
     // ROUTE PT YEKAPE SURABAYA
-
+    // BAGIAN UMUM
     Route::get('mkeperluan/{id?}', ['uses' => 'umum\MasterKeperluanController@link', 'as' => 'mkeperluan-link']);
     Route::get('mkeperluan-data', ['uses' => 'umum\MasterKeperluanController@data', 'as' => 'mkeperluan-data']);
     Route::post('mkeperluan-simpan', ['uses' => 'umum\MasterKeperluanController@simpan', 'as' => 'mkeperluan-simpan']);
@@ -130,6 +130,21 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('keluar-simpan', ['uses' => 'umum\KeluarController@simpan', 'as' => 'keluar-simpan']);
     Route::get('keluar-hapus/{id?}', ['uses' => 'umum\KeluarController@hapus', 'as' => 'keluar-hapus']);
     Route::post('keluar-cetak', ['uses' => 'umum\KeluarController@cetak', 'as' => 'keluar-cetak']);
+
+    Route::get('umumkavling/{id?}', ['uses' => 'umum\KavlingController@link', 'as' => 'umumkavling-link']);
+    Route::get('umumkavling-data/{filter}', ['uses' => 'umum\KavlingController@data', 'as' => 'umumkavling-data']);
+    Route::post('umumkavling-simpan', ['uses' => 'umum\KavlingController@simpan', 'as' => 'umumkavling-simpan']);
+    Route::get('umumkavling-hapus/{id?}', ['uses' => 'umum\KavlingController@hapus', 'as' => 'umumkavling-hapus']);
+    Route::post('umumkavling-cetak', ['uses' => 'umum\KavlingController@cetak', 'as' => 'umumkavling-cetak']);
+    Route::get('umumkavling-hitung', ['uses' => 'umum\KavlingController@hitung', 'as' => 'umumkavling-hitung']);
+
+    
+    // BAGIAN PEMBANGUNAN
+    Route::get('pembangunankavling/{id?}', ['uses' => 'pembangunan\KavlingController@link', 'as' => 'pembangunankavling-link']);
+    Route::get('pembangunankavling-data/{filter}', ['uses' => 'pembangunan\KavlingController@data', 'as' => 'pembangunankavling-data']);
+    Route::post('pembangunankavling-simpan', ['uses' => 'pembangunan\KavlingController@simpan', 'as' => 'pembangunankavling-simpan']);
+    Route::get('pembangunankavling-hapus/{id?}', ['uses' => 'pembangunan\KavlingController@hapus', 'as' => 'pembangunankavling-hapus']);
+    Route::post('pembangunankavling-cetak', ['uses' => 'pembangunan\KavlingController@cetak', 'as' => 'pembangunankavling-cetak']);
 
     // MANAJEMENT USER
     Route::get('data-user', ['uses' => 'UserController@index', 'as' => 'data-user']);
