@@ -44,16 +44,14 @@ class KeluarController extends Controller
 
         return Datatables::of($query)
                         ->addColumn('menu', function($model) {
-                            $hapus = '<a onclick="return confirm(\'Apakah anda yakin untuk membatalkan data ini ?\')"  href="'.route('keluar-hapus', ['id' => $model->id]).'" class="flaticon-delete"></a>';
+                            $hapus = '<a onclick="return confirm(\'Apakah anda yakin untuk membatalkan data ini ?\')"  href="'.route('keluar-hapus', ['id' => $model->id]).'"><button class="btn btn-outline-dark btn-icon btn-elevate flaticon-delete"></button></a>';
                             // $update = '<a onclick="return confirm(\'Apakah anda yakin untuk membatalkan data ini ?\')"  href="'.route('keluar-update', ['id' => $model->id, 'id_keperluan' => $model->id_keperluan]).'" class="flaticon-edit"></a>';
                             
-                            // $recid = $model->id . '.' . $model->id_keperluan;
-
-                            // $update = '<a onclick="update(' . $recid . ')"  class="flaticon-edit" data-toggle="modal"></a>';
-                            $edit = '<a href="' . route("keluar-link", ['id' => $model->id]) . '"><i class="flaticon-edit"></i></a>';
+                            $edit = '<a href="' . route("keluar-link", ['id' => $model->id]) . '"><button class="btn btn-outline-dark btn-icon btn-elevate flaticon-edit"></button></a>';
+                            // $edit = '<a href="' . route("keluar-link", ['id' => $model->id]) . '"><i class="flaticon-edit"></i></a>';
                             
-                            if (Auth::user()->tipe == 'Admin') {
-                                return $hapus . '' . $edit;
+                            if (Auth::user()->tipe == 'Admin' || Auth::user()->tipe == 'Kabag Umum') {
+                                return $hapus . '&nbsp;' . $edit;
                             }else{
                                 return $hapus;
                             }

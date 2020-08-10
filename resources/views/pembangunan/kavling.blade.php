@@ -425,7 +425,7 @@
 	            {data: 'tipe', defaultContent: '-'},
 	            {data: 'luas_bangun', defaultContent: '-'},
 	            {data: 'luas_tanah', defaultContent: '-'},
-	            {data: 'status', defaultContent: '-'},
+	            {data: 'kavlingstatus.keterangan', defaultContent: '-'},
 	            {data: 'menu', orderable: false, searchable: false},
 	        ],
 	        

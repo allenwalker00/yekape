@@ -47,7 +47,7 @@ class KavlingController extends Controller
         // }
         // $x = "VILLA";
 
-        $query = Kavling::where('batal', 0);
+        $query = Kavling::with('kavlingstatus')->where('batal', 0);
 
         
         

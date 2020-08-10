@@ -67,6 +67,9 @@
 											<th>Luas Tanah</th>
 											<th>Harga KPR</th>
 											<th>Status</th>
+											<th>Nama Pemesan</th>
+											<th>Telp Pemesan</th>
+											<th>Keterangan</th>
 											<th>Menu</th>
 										</tr>
 									</thead>
@@ -451,7 +454,10 @@
 	            {data: 'luas_bangun', defaultContent: '-'},
 	            {data: 'luas_tanah', defaultContent: '-'},
 	            {data: 'harga_kpr', defaultContent: '-', render: $.fn.dataTable.render.number(',', '.', 0, 'Rp. '), className: 'text-right'},
-	            {data: 'status', defaultContent: '-'},
+	            {data: 'kavlingstatus.keterangan', defaultContent: '-'},
+	            {data: 'nama_pemesan', defaultContent: '-'},
+	            {data: 'telp_pemesan', defaultContent: '-'},
+	            {data: ',keterangan', defaultContent: '-'},
 	            {data: 'menu', orderable: false, searchable: false},
 	        ],
 
