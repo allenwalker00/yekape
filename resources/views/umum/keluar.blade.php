@@ -144,7 +144,7 @@
 									<div class="form-group kt-form__group row">
 										<label class="col-form-label col-md-2">Jumlah (Rp)</label>
 										<div class="col-md-3">
-											<input type="text" class="form-control kt-input kt-input--air currency" name="jumlah" id="jumlah" value="{{$data->jumlah or ''}}" required {{$data == null ? "" : "readonly" }}>
+											<input type="text" class="form-control kt-input kt-input--air currency" name="jumlah" id="jumlah" value="{{$data==null? "" : number_format($data->jumlah, 0, ',', '.')}}" required {{$data == null ? "" : "readonly" }}>
 										</div>
 									</div>
 									<div class="form-group kt-form__group row">

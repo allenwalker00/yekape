@@ -12,7 +12,6 @@
 					Bagian Umum </h3>
 				<span class="kt-subheader__separator kt-hidden"></span>
 			</div>
-			
 		</div>
 	</div>
 
@@ -138,7 +137,7 @@
 											<select class="form-control kt-select2" id="status" name="status" style="width: 100%">
 												<option value="">Pilih Status</option>
 			                                    @foreach($status as $r)
-			                                    @if($data != null && $data->id_status == $r->id)
+			                                    @if($data->status == $r->id)
 			                                    	<option value="{{$r->id}}" selected="">{{$r->keterangan}}</option>
 			                                    @else
 			                                    	<option value="{{$r->id}}">{{$r->keterangan}}</option>
@@ -168,7 +167,7 @@
 									<div class="form-group kt-form__group row">
 										<label class="col-form-label col-md-2">Harga KPR (Rp)</label>
 										<div class="col-md-3">
-											<input type="text" class="form-control kt-input kt-input--air currency" name="harga_kpr" id="harga_kpr" value="{{$data->harga_kpr or ''}}">
+											<input type="text" class="form-control kt-input kt-input--air currency" name="harga_kpr" id="harga_kpr" value="{{number_format($data->harga_kpr, 0, ',', '.')}}">
 										</div>
 									</div>
 									<div class="form-group kt-form__group row">
@@ -268,43 +267,43 @@
 									<div class="form-group kt-form__group row">
 										<label class="col-form-label col-md-4">Harga</label>
 										<div class="col-md-6">
-											<input type="text" class="form-control kt-input kt-input--air currency" name="" id="mharga">
+											<input type="text" class="form-control kt-input kt-input--air currency" name="" id="mharga" style="text-align: right;">
 										</div>
 									</div>
 									<div class="form-group kt-form__group row">
 										<label class="col-form-label col-md-4">Uang Muka 20%</label>
 										<div class="col-md-6">
-											<input type="text" class="form-control kt-input kt-input--air currency" name="" id="muangmuka">
+											<input type="text" class="form-control kt-input kt-input--air currency" name="" id="muangmuka" style="text-align: right;">
 										</div>
 									</div>
 									<div class="form-group kt-form__group row">
 										<label class="col-form-label col-md-4">Angsuran UM</label>
 										<div class="col-md-6">
-											<input type="text" class="form-control kt-input kt-input--air currency" name="" id="mangsuran">
+											<input type="text" class="form-control kt-input kt-input--air currency" name="" id="mangsuran" style="text-align: right;">
 										</div>
 									</div>
 									<div class="form-group kt-form__group row">
 										<label class="col-form-label col-md-4">Bunga (%)</label>
 										<div class="col-md-6">
-											<input type="text" class="form-control kt-input kt-input--air currency" name="" id="mbunga">
+											<input type="text" class="form-control kt-input kt-input--air currency" name="" id="mbunga" style="text-align: right;">
 										</div>
 									</div>
 									<div class="form-group kt-form__group row">
 										<label class="col-form-label col-md-4">Angsuran 5th</label>
 										<div class="col-md-6">
-											<input type="text" class="form-control kt-input kt-input--air currency" name="" id="m5">
+											<input type="text" class="form-control kt-input kt-input--air currency" name="" id="m5" style="text-align: right;">
 										</div>
 									</div>
 									<div class="form-group kt-form__group row">
 										<label class="col-form-label col-md-4">Angsuran 10th</label>
 										<div class="col-md-6">
-											<input type="text" class="form-control kt-input kt-input--air currency" name="" id="m10">
+											<input type="text" class="form-control kt-input kt-input--air currency" name="" id="m10" style="text-align: right;">
 										</div>
 									</div>
 									<div class="form-group kt-form__group row">
 										<label class="col-form-label col-md-4">Angsuran 15th</label>
 										<div class="col-md-6">
-											<input type="text" class="form-control kt-input kt-input--air currency" name="" id="m15">
+											<input type="text" class="form-control kt-input kt-input--air currency" name="" id="m15" style="text-align: right;">
 										</div>
 									</div>
 								</div>
@@ -498,18 +497,23 @@
 	    });
 
 	    $("#hitung").click(function(){
-	    	var bunga = $('#mbunga').val()/100;
-	    	var pokokpinjaman = $('#mharga').val() - $('#muangmuka').val();
+	    	var bunga = $('#mbunga').val().replace('.','').replace('.','').replace('.','')/100;
 
-	    	var x5 = pmt(bunga/12, 5*12, pokokpinjaman);
-	    	var x10 = pmt(bunga/12, 10*12, pokokpinjaman);
-	    	var x15 = pmt(bunga/12, 15*12, pokokpinjaman);
+	    	var pokokpinjaman = $('#mharga').val().replace('.','').replace('.','').replace('.','') - $('#muangmuka').val().replace('.','').replace('.','').replace('.','');
+
+	    	var x5 = -1 * pmt(bunga/12, 5*12, pokokpinjaman);
+	    	var x10 = -1 * pmt(bunga/12, 10*12, pokokpinjaman);
+	    	var x15 = -1 * pmt(bunga/12, 15*12, pokokpinjaman);
+
+	    	var t5 = rupiah(x5.toFixed(2));
+	    	var t10 = rupiah(x10.toFixed(2));
+	    	var t15 = rupiah(x15.toFixed(2));
 
 	    	// alert()
 
-	    	$('#m5').val(x5.toFixed(2));
-	    	$('#m10').val(x10.toFixed(2));
-	    	$('#m15').val(x15.toFixed(2));
+	    	$('#m5').val(t5);
+	    	$('#m10').val(t10);
+	    	$('#m15').val(t15);
 			// $('#tabel').DataTable().ajax.url(url).load();
 			// $("#modal_filter").modal('hide');
 
@@ -520,6 +524,7 @@
 
 	function hitung(id){
 		// alert(id);
+
 		var token = '{{csrf_token()}}';
         $.ajax({
             url: "{{route('umumkavling-hitung')}}",
@@ -530,11 +535,11 @@
             
             success: function (result) {
             	// var x = formatRupiah(result.data.harga_kpr);
-            	// alert(x);
+
             	$("#mcluster").val(result.data.cluster+' BLOK '+result.data.blok+' NO '+result.data.nomor);
-            	$("#mharga").val(result.data.harga_kpr);
-            	$("#muangmuka").val(result.data.harga_kpr*0.2);
-            	$("#mangsuran").val(result.data.harga_kpr*0.2/24);
+            	$("#mharga").val(rupiah(result.data.harga_kpr));
+            	$("#muangmuka").val(rupiah(result.data.harga_kpr*0.2));
+            	$("#mangsuran").val(rupiah(result.data.harga_kpr*0.2/24));
 	   			$('#mbunga').val('');
 	   			$('#m5').val('');
 		    	$('#m10').val('');
@@ -560,6 +565,26 @@
 		}
 
 		return 0;
+	}
+
+	function rupiah(n){
+		var bilangan = (n.toString()).replace('.', ",");
+		var	number_string = bilangan.toString(),
+			split	= number_string.split(','),
+			sisa 	= split[0].length % 3,
+			rupiah 	= split[0].substr(0, sisa),
+			ribuan 	= split[0].substr(sisa).match(/\d{1,3}/gi);
+				
+		if (ribuan) {
+			separator = sisa ? '.' : '';
+			rupiah += separator + ribuan.join('.');
+		}
+		rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+
+		// Cetak hasil	
+
+		return rupiah;
+		// document.write(rupiah); // Hasil 23.456.789,32
 	}
 	
 

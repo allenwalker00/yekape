@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 use Carbon\Carbon;
 use Auth;
 use App\Models\Menus;
@@ -117,6 +118,10 @@ class AppServiceProvider extends ServiceProvider
                 $html .= '</ul></div></li></ul></div></li>';
             }
             $view->with('menu', $html);
+        });
+        
+        Blade::directive('rupe', function ($expression) {
+            return "Rp. <?php echo number_format($expression, 0, ',', '.'); ?>";
         });
     }
 
