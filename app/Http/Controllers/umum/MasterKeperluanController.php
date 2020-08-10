@@ -31,7 +31,8 @@ class MasterKeperluanController extends Controller
 
         return Datatables::of($query)
                         ->addColumn('menu', function($model) {
-                            $hapus = '<a onclick="return confirm(\'Apakah anda yakin untuk membatalkan data ini ?\')"  href="'.route('mkeperluan-hapus', ['id' => $model->id]).'" class="btn btn-sm btn-danger">Hapus</a>';
+                            // $hapus = '<a onclick="return confirm(\'Apakah anda yakin untuk membatalkan data ini ?\')"  href="'.route('mkeperluan-hapus', ['id' => $model->id]).'" class="btn btn-sm btn-danger">Hapus</a>';
+                            $hapus = '<a onclick="return confirm(\'Apakah anda yakin untuk membatalkan data ini ?\')"  href="'.route('mkeperluan-hapus', ['id' => $model->id]).'"><button class="btn btn-outline-danger btn-icon btn-elevate btn-sm flaticon-delete"></button></a>';
                             return $hapus;
                         })
                         ->rawColumns(['menu'])

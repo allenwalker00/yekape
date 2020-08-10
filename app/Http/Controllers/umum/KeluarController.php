@@ -44,8 +44,8 @@ class KeluarController extends Controller
 
         return Datatables::of($query)
                         ->addColumn('menu', function($model) {
+                            // $hapus = '<a onclick="return confirm(\'Apakah anda yakin untuk membatalkan data ini ?\')"  href="'.route('keluar-hapus', ['id' => $model->id]).'"><button class="btn btn-outline-dark btn-icon btn-elevate flaticon-delete"></button></a>';
                             $hapus = '<a onclick="return confirm(\'Apakah anda yakin untuk membatalkan data ini ?\')"  href="'.route('keluar-hapus', ['id' => $model->id]).'"><button class="btn btn-outline-dark btn-icon btn-elevate flaticon-delete"></button></a>';
-                            // $update = '<a onclick="return confirm(\'Apakah anda yakin untuk membatalkan data ini ?\')"  href="'.route('keluar-update', ['id' => $model->id, 'id_keperluan' => $model->id_keperluan]).'" class="flaticon-edit"></a>';
                             
                             $edit = '<a href="' . route("keluar-link", ['id' => $model->id]) . '"><button class="btn btn-outline-dark btn-icon btn-elevate flaticon-edit"></button></a>';
                             // $edit = '<a href="' . route("keluar-link", ['id' => $model->id]) . '"><i class="flaticon-edit"></i></a>';

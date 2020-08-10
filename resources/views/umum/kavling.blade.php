@@ -39,14 +39,8 @@
 						<div class="kt-portlet__head-toolbar">
 							<div class="kt-portlet__head-wrapper">
 								<div class="kt-portlet__head-actions">
-									<!-- <button class="btn btn-brand btn-elevate btn-icon-sm btn-sm" id="tambah">
-										<i class="la la-plus"></i>
-										Tambah
-									</button> -->
-									<button class="btn btn-brand btn-elevate btn-icon-sm btn-sm btn-success" id="b_filter" data-toggle="modal">
-										Filter / Cetak
+									<button class="btn btn-outline-brand btn-icon btn-sm flaticon-more-1" id="b_filter" data-toggle="modal">
 									</button>
-									<!-- <button type="submit" class="btn btn-sm btn-info" id="cetak">Cetak Laporan</button> -->
 								</div>
 							</div>
 						</div>

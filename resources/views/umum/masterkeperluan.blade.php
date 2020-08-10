@@ -41,7 +41,7 @@
 						
 						<div class="kt-portlet__head-toolbar">
 							<div class="kt-portlet__head-wrapper">
-								<div class="kt-portlet__head-actions">
+								<!-- <div class="kt-portlet__head-actions">
 									<button class="btn btn-brand btn-elevate btn-sm btn-success" id="cetak">
 										Cetak
 									</button>
@@ -49,7 +49,7 @@
 										<i class="la la-plus"></i>
 										Tambah
 									</button>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</div>
