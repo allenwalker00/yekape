@@ -535,11 +535,10 @@
             	$("#mharga").val(result.data.harga_kpr);
             	$("#muangmuka").val(result.data.harga_kpr*0.2);
             	$("#mangsuran").val(result.data.harga_kpr*0.2/24);
-    //             $.each( result.data, function( key, value ) {
-    //             	// alert(value.harga);
-				//  	$("#mdetail").append(
-				//  		'<tr><td>'+value.seleb.nama_seleb+'</td><td>'+value.berat+'</td><td>'+value.harga+'</td><td>'+value.rp_tagihan+'</td></tr>');
-				// });
+	   			$('#mbunga').val('');
+	   			$('#m5').val('');
+		    	$('#m10').val('');
+		    	$('#m15').val('');
 				$("#modal_hitung").modal('show');
             }
         });
