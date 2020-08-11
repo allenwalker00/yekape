@@ -47,28 +47,28 @@ class PendaftaranController extends Controller
         if ($req->hasFile('photo')) {
             $file = $req->file('photo');
             $extension = $file->getClientOriginalExtension();
-            $path = "photo/" . $data->id . "." . $extension;
+            $path = "public/photo/" . $data->id . "." . $extension;
             $cek = Storage::put($path, File::get($file));
         }
 
         if ($req->hasFile('ktp')) {
             $file = $req->file('ktp');
             $extension = $file->getClientOriginalExtension();
-            $path = "ktp/" . $data->id . "." . $extension;
+            $path = "public/ktp/" . $data->id . "." . $extension;
             $cek = Storage::put($path, File::get($file));
         }
 
         if ($req->hasFile('kk')) {
             $file = $req->file('kk');
             $extension = $file->getClientOriginalExtension();
-            $path = "kk/" . $data->id . "." . $extension;
+            $path = "public/kk/" . $data->id . "." . $extension;
             $cek = Storage::put($path, File::get($file));
         }
 
         if ($req->hasFile('npwp')) {
             $file = $req->file('npwp');
             $extension = $file->getClientOriginalExtension();
-            $path = "npwp/" . $data->id . "." . $extension;
+            $path = "public/npwp/" . $data->id . "." . $extension;
             $cek = Storage::put($path, File::get($file));
         }
         
