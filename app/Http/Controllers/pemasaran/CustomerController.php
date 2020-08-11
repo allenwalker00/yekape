@@ -116,7 +116,8 @@ class CustomerController extends Controller
     }
 
     public function foto(Request $req){
-        $data = 'http://127.0.0.1/yekape/public/storage/photo/'.$req->id.'.jpg';
+        $data = asset("storage/photo/15.jpg");
+        // $data = 'http://127.0.0.1/yekape/public/storage/photo/'.$req->id.'.jpg';
         return response()->json(['data' => $data]);
     }
 
