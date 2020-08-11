@@ -11,13 +11,6 @@
 				<h3 class="kt-subheader__title">
 					&nbsp; </h3>
 				<span class="kt-subheader__separator kt-hidden"></span>
-				<!-- <div class="kt-subheader__breadcrumbs">
-					<span class="kt-subheader__breadcrumbs-separator"></span>
-					<a href="" class="kt-subheader__breadcrumbs-link">
-						Pricing Tables 1 </a>
-
-					<span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span>
-				</div> -->
 			</div>
 			
 		</div>
@@ -60,14 +53,6 @@
 														<div class="kt-wizard-v3__nav-bar"></div>
 													</div>
 												</a>
-												<!-- <a class="kt-wizard-v3__nav-item" href="" data-ktwizard-type="step">
-													<div class="kt-wizard-v3__nav-body">
-														<div class="kt-wizard-v3__nav-label">
-															<span>2</span> Purpose
-														</div>
-														<div class="kt-wizard-v3__nav-bar"></div>
-													</div>
-												</a> -->
 												<a class="kt-wizard-v3__nav-item" href="" data-ktwizard-type="step">
 													<div class="kt-wizard-v3__nav-body">
 														<div class="kt-wizard-v3__nav-label">
@@ -84,7 +69,7 @@
 									<div class="kt-grid__item kt-grid__item--fluid kt-wizard-v3__wrapper">
 
 										<!--begin: Form Wizard Form-->
-										<form class="kt-form" id="kt_form" method="post" action="{{route('pendaftaran-simpan')}}">
+										<form class="kt-form" id="kt_form" method="post" action="{{route('pendaftaran-simpan')}}" enctype="multipart/form-data">
 											<input type="text" class="kt-hide" name="_token" value="{{csrf_token()}}">
 											<!--begin: Form Wizard Step 1-->
 											<div class="kt-wizard-v3__content" data-ktwizard-type="step-content" data-ktwizard-state="current">
@@ -93,23 +78,23 @@
 													<div class="kt-wizard-v3__form">
 														<div class="form-group">
 															<label>Nama</label>
-															<input type="text" class="form-control" name="surname">
+															<input type="text" class="form-control" name="nama" required>
 														</div>
 														<div class="form-group">
 															<label>Jalan</label>
-															<input type="text" class="form-control" name="first_name">
+															<input type="text" class="form-control" name="jalan" required>
 														</div>
 														<div class="row">
 															<div class="col-xl-6">
 																<div class="form-group">
 																	<label>Kelurahan</label>
-																	<input type="text" class="form-control" name="nationality">
+																	<input type="text" class="form-control" name="kel" required>
 																</div>
 															</div>
 															<div class="col-xl-6">
 																<div class="form-group">
 																	<label>Kecamatan</label>
-																	<input type="text" class="form-control" name="passport">
+																	<input type="text" class="form-control" name="kec" required>
 																</div>
 															</div>
 														</div>
@@ -117,13 +102,13 @@
 															<div class="col-xl-6">
 																<div class="form-group">
 																	<label>Kabupaten/Kota</label>
-																	<input type="text" class="form-control" name="nationality">
+																	<input type="text" class="form-control" name="kab" required>
 																</div>
 															</div>
 															<div class="col-xl-6">
 																<div class="form-group">
 																	<label>Provinsi</label>
-																	<input type="text" class="form-control" name="passport">
+																	<input type="text" class="form-control" name="prov" required>
 																</div>
 															</div>
 														</div>
@@ -131,14 +116,14 @@
 															<div class="col-xl-6">
 																<div class="form-group">
 																	<label>Tempat Lahir</label>
-																	<input type="text" class="form-control" name="gender">
+																	<input type="text" class="form-control" name="tmp_lahir" required>
 																</div>
 															</div>
 															<div class="col-xl-6">
 																<div class="form-group">
 																	<label>Tanggal Lahir</label>
 																	<div class="input-group date">
-																		<input type="text" class="form-control" id="kt_datepicker_birthday" name="birthday" />
+																		<input type="text" class="form-control" id="kt_datepicker_birthday" name="tgl_lahir" required/>
 																		<div class="input-group-append">
 																			<span class="input-group-text">
 																				<i class="la la-calendar"></i>
@@ -148,37 +133,17 @@
 																</div>
 															</div>
 														</div>
-														<!-- <div class="row">
-															<div class="col-xl-6">
-																<div class="form-group">
-																	<label>State</label>
-																	<input type="text" class="form-control" name="state">
-																</div>
-															</div>
-															<div class="col-xl-3">
-																<div class="form-group">
-																	<label>Country</label>
-																	<input type="text" class="form-control" name="country">
-																</div>
-															</div>
-															<div class="col-xl-3">
-																<div class="form-group">
-																	<label>Zip Code</label>
-																	<input type="text" class="form-control" name="zip_code">
-																</div>
-															</div>
-														</div> -->
 														<div class="row">
 															<div class="col-xl-6">
 																<div class="form-group">
 																	<label>Telephone</label>
-																	<input type="text" class="form-control" name="telephone">
+																	<input type="text" class="form-control" name="telp" required>
 																</div>
 															</div>
 															<div class="col-xl-6">
 																<div class="form-group">
 																	<label>Email</label>
-																	<input type="text" class="form-control" name="email">
+																	<input type="text" class="form-control" name="email" required>
 																</div>
 															</div>
 														</div>														
@@ -186,112 +151,7 @@
 												</div>
 											</div>
 
-											<!--end: Form Wizard Step 1-->
-
 											<!--begin: Form Wizard Step 2-->
-											<!-- <div class="kt-wizard-v3__content" data-ktwizard-type="step-content">
-												<div class="kt-heading kt-heading--md">Enter the Details of your Purpose</div>
-												<div class="kt-form__section kt-form__section--first">
-													<div class="kt-wizard-v3__form">
-														<div class="row">
-															<div class="col-xl-6">
-																<div class="form-group">
-																	<label>Currently Enrolled at</label>
-																	<input type="text" class="form-control" name="enrolled_at">
-																</div>
-															</div>
-															<div class="col-xl-6">
-																<div class="form-group">
-																	<label>Year Stundent</label>
-																	<input type="text" class="form-control" name="year">
-																</div>
-															</div>
-														</div>
-														<div class="row">
-															<div class="col-xl-6">
-																<div class="form-group">
-																	<label>Purpose of the visit</label>
-																	<select name="visit_purpose" class="form-control">
-																		<option value="">Select</option>
-																		<option value="Clinical Elective">Clinical Elective</option>
-																		<option value="Student Research Project">Student Research Project</option>
-																	</select>
-																</div>
-															</div>
-															<div class="col-xl-6">
-																<div class="form-group">
-																	<label>Expected Graduation</label>
-																	<input type="text" class="form-control" name="date_graduate">
-																</div>
-															</div>
-														</div>
-														<div class="row">
-															<div class="col-xl-6">
-																<div class="form-group">
-																	<label>Clinical Elective Preference</label>
-																	<select name="clinical_preferance" class="form-control" id="Y">
-																		<option value="">Select</option>
-																		<option value="Clinical Elective">Clinical Elective</option>
-																		<option value="Student Research Project">Student Research Project</option>
-																		<option value="Other">Others</option>
-																	</select>
-																</div>
-															</div>
-															<div class="col-xl-6">
-																<div class="form-group kt-hidden" id="div-other">
-																	<label>Others</label>
-																	<input type="text" class="form-control" name="clinical_preferance_other">
-																</div>
-															</div>
-														</div>
-														<div class="row">
-															<div class="col-xl-6">
-																<div class="form-group">
-																	<label>Inclusive Date Start</label>
-																	<div class="input-group date">
-																		<input type="text" class="form-control" id="kt_datepicker_start" name="inclusive_date_start" />
-																		<div class="input-group-append">
-																			<span class="input-group-text">
-																				<i class="la la-calendar"></i>
-																			</span>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="col-xl-6">
-																<div class="form-group">
-																	<label>Inclusive Date End</label>
-																	<div class="input-group date">
-																		<input type="text" class="form-control" id="kt_datepicker_end" name="inclusive_date_end" />
-																		<div class="input-group-append">
-																			<span class="input-group-text">
-																				<i class="la la-calendar"></i>
-																			</span>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div class="row">
-															<div class="col-xl-6">
-																<div class="form-group">
-																	<label>Insurance</label>
-																	<input type="text" class="form-control" name="insurance_name">
-																</div>
-															</div>
-															<div class="col-xl-6">
-																<div class="form-group">
-																	<label>Insurance Number</label>
-																	<input type="text" class="form-control" name="insurance_number">
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div> -->
-											<!--end: Form Wizard Step 2-->
-
-											<!--begin: Form Wizard Step 3-->
 											<div class="kt-wizard-v3__content" data-ktwizard-type="step-content">
 												<div class="kt-heading kt-heading--md">Upload Dokumen Pendukung</div>
 												<div class="kt-form__section kt-form__section--first">
@@ -301,7 +161,7 @@
 																<div class="form-group">
 																	<label>Photo</label>
 																	<div class="custom-file">
-																		<input type="file" class="custom-file-input" name="photo">
+																		<input type="file" class="custom-file-input" name="photo" required>
 																		<label class="custom-file-label" id="photolabel" for="photo">Choose file</label>
 																	</div>
 																</div>
@@ -310,8 +170,8 @@
 																<div class="form-group">
 																	<label>KTP</label>
 																	<div class="custom-file">
-																		<input type="file" class="custom-file-input" name="cv">
-																		<label class="custom-file-label" id="cvlabel" for="cv">Choose file</label>
+																		<input type="file" class="custom-file-input" name="ktp" required>
+																		<label class="custom-file-label" id="ktplabel" for="ktp">Choose file</label>
 																	</div>
 																</div>
 															</div>
@@ -321,8 +181,8 @@
 																<div class="form-group">
 																	<label>KK</label>
 																	<div class="custom-file">
-																		<input type="file" class="custom-file-input" name="passport">
-																		<label class="custom-file-label" id="passportlabel" for="passport">Choose file</label>
+																		<input type="file" class="custom-file-input" name="kk" required>
+																		<label class="custom-file-label" id="kklabel" for="kk">Choose file</label>
 																	</div>
 																</div>
 															</div>
@@ -330,8 +190,8 @@
 																<div class="form-group">
 																	<label>NPWP</label>
 																	<div class="custom-file">
-																		<input type="file" class="custom-file-input" name="intens">
-																		<label class="custom-file-label" id="intenslabel" for="intens">Choose file</label>
+																		<input type="file" class="custom-file-input" name="npwp" required>
+																		<label class="custom-file-label" id="npwplabel" for="npwp">Choose file</label>
 																	</div>
 																</div>
 															</div>

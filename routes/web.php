@@ -146,6 +146,16 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('pembangunankavling-hapus/{id?}', ['uses' => 'pembangunan\KavlingController@hapus', 'as' => 'pembangunankavling-hapus']);
     Route::post('pembangunankavling-cetak', ['uses' => 'pembangunan\KavlingController@cetak', 'as' => 'pembangunankavling-cetak']);
 
+
+    // BAGIAN PEMASARAN
+    Route::get('customer/{id?}', ['uses' => 'pemasaran\CustomerController@link', 'as' => 'customer-link']);
+    Route::get('customer-data/{filter}', ['uses' => 'pemasaran\CustomerController@data', 'as' => 'customer-data']);
+    Route::post('customer-simpan', ['uses' => 'pemasaran\CustomerController@simpan', 'as' => 'customer-simpan']);
+    Route::get('customer-hapus/{id?}', ['uses' => 'pemasaran\CustomerController@hapus', 'as' => 'customer-hapus']);
+    Route::post('customer-cetak', ['uses' => 'pemasaran\CustomerController@cetak', 'as' => 'customer-cetak']);
+    Route::get('customer-detail', ['uses' => 'pemasaran\CustomerController@detail', 'as' => 'customer-detail']);
+
+
     // MANAJEMENT USER
     Route::get('data-user', ['uses' => 'UserController@index', 'as' => 'data-user']);
     Route::get('data-user-show', ['uses' => 'UserController@show', 'as' => 'data-user-show']);

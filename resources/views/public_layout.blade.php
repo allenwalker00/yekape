@@ -91,7 +91,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!-- <link href="{{asset('assets/css/demo1/skins/aside/dark.css')}}" rel="stylesheet" type="text/css" /> -->
 
 		<!--end::Layout Skins -->
-		<link rel="shortcut icon" href="{{asset('assets/lg-original.png')}}" />
+		<!-- <link rel="shortcut icon" href="{{asset('assets/lg-original.png')}}" /> -->
 	</head>
 
 	<!-- end::Head -->
