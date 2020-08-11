@@ -154,6 +154,10 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('customer-hapus/{id?}', ['uses' => 'pemasaran\CustomerController@hapus', 'as' => 'customer-hapus']);
     Route::post('customer-cetak', ['uses' => 'pemasaran\CustomerController@cetak', 'as' => 'customer-cetak']);
     Route::get('customer-detail', ['uses' => 'pemasaran\CustomerController@detail', 'as' => 'customer-detail']);
+    Route::get('customer-foto', ['uses' => 'pemasaran\CustomerController@foto', 'as' => 'customer-foto']);
+    Route::get('customer-ktp', ['uses' => 'pemasaran\CustomerController@ktp', 'as' => 'customer-ktp']);
+    Route::get('customer-kk', ['uses' => 'pemasaran\CustomerController@kk', 'as' => 'customer-kk']);
+    Route::get('customer-npwp', ['uses' => 'pemasaran\CustomerController@npwp', 'as' => 'customer-npwp']);
 
 
     // MANAJEMENT USER

@@ -60,6 +60,10 @@
 											<th>Tgl Lahir</th>
 											<th>Telp</th>
 											<th>Email</th>
+											<th>Foto</th>
+											<th>KTP</th>
+											<th>KK</th>
+											<th>NPWP</th>
 											<th>Menu</th>
 										</tr>
 									</thead>
@@ -261,18 +265,108 @@
 											<input type="text" class="form-control kt-input kt-input--air" name="" id="mcluster" readonly>
 										</div>
 									</div>
-									<div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-4">KTP</label>
-										<div class="col-md-8">
-											<img id="pktp" src="{{storage/ktp/9.jpg}}" width="40%">
-										</div>
-									</div>
 								</div>
 							</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-sm btn-brand btn-info" id="hitung">Hitung</button>
 							<!-- <button type="submit" class="btn btn-sm btn-success">Cetak</button> -->
+							<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<form class="modal fade" id="modal_foto" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="">Berkas Foto</h5>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<div class="col-md-12">
+									<div class="form-group kt-form__group row">
+										<div class="col-md-12">
+											<img id="pfoto" src="" width="100%" height="100%">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<form class="modal fade" id="modal_ktp" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="">Berkas ktp</h5>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<div class="col-md-12">
+									<div class="form-group kt-form__group row">
+										<div class="col-md-12">
+											<img id="pktp" src="" width="100%" height="100%">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<form class="modal fade" id="modal_kk" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="">Berkas kk</h5>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<div class="col-md-12">
+									<div class="form-group kt-form__group row">
+										<div class="col-md-12">
+											<img id="pkk" src="" width="100%" height="100%">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<form class="modal fade" id="modal_npwp" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="">Berkas npwp</h5>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<div class="col-md-12">
+									<div class="form-group kt-form__group row">
+										<div class="col-md-12">
+											<img id="pnpwp" src="" width="100%" height="100%">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
 							<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
 						</div>
 					</div>
@@ -406,9 +500,13 @@
 	            {data: 'kec', defaultContent: '-'},
 	            {data: 'kab', defaultContent: '-'},
 	            {data: 'tmp_lahir', defaultContent: '-'},
-	            {data: 'tgl_lahir', defaultContent: '-', render: $.fn.dataTable.render.number(',', '.', 0, 'Rp. '), className: 'text-right'},
+	            {data: 'tgl_lahir', defaultContent: '-'},
 	            {data: 'telp', defaultContent: '-'},
 	            {data: 'email', defaultContent: '-'},
+	            {data: 'foto', defaultContent: '-'},
+	            {data: 'ktp', orderable: false, searchable: false},
+	            {data: 'kk', orderable: false, searchable: false},
+	            {data: 'npwp', orderable: false, searchable: false},
 	            {data: 'menu', orderable: false, searchable: false},
 	        ],
 
@@ -479,6 +577,70 @@
 	    });
 	   
 	});
+
+	function foto(id){
+		var token = '{{csrf_token()}}';
+        $.ajax({
+            url: "{{route('customer-foto')}}",
+            type: 'GET',
+            headers: {'X-CSRF-TOKEN': token},
+            data: {id: id},
+            cache: false,
+            
+            success: function (result) {
+				$('#pfoto').attr("src", result.data);
+				$("#modal_foto").modal('show');
+            }
+        });
+	}
+
+	function ktp(id){
+		var token = '{{csrf_token()}}';
+        $.ajax({
+            url: "{{route('customer-ktp')}}",
+            type: 'GET',
+            headers: {'X-CSRF-TOKEN': token},
+            data: {id: id},
+            cache: false,
+            
+            success: function (result) {
+				$('#pktp').attr("src", result.data);
+				$("#modal_ktp").modal('show');
+            }
+        });
+	}
+
+	function kk(id){
+		var token = '{{csrf_token()}}';
+        $.ajax({
+            url: "{{route('customer-kk')}}",
+            type: 'GET',
+            headers: {'X-CSRF-TOKEN': token},
+            data: {id: id},
+            cache: false,
+            
+            success: function (result) {
+				$('#pkk').attr("src", result.data);
+				$("#modal_kk").modal('show');
+            }
+        });
+	}
+
+	function npwp(id){
+		var token = '{{csrf_token()}}';
+        $.ajax({
+            url: "{{route('customer-npwp')}}",
+            type: 'GET',
+            headers: {'X-CSRF-TOKEN': token},
+            data: {id: id},
+            cache: false,
+            
+            success: function (result) {
+				$('#pnpwp').attr("src", result.data);
+				$("#modal_npwp").modal('show');
+            }
+        });
+	}
 
 	function detail(id){
 		// alert(id);

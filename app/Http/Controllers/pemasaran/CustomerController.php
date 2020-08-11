@@ -48,24 +48,38 @@ class CustomerController extends Controller
         // $query->get();
 
         return Datatables::of($query)
+        				->addColumn('foto', function($model) {
+                            $foto = '<button type="button" onclick="foto(' . $model->id . ')" class="btn btn-outline-dark btn-icon btn-elevate flaticon-eye" data-toggle="modal"></button>';
+                            
+                            return $foto;
+                        })
+                        ->addColumn('ktp', function($model) {
+                            $ktp = '<button type="button" onclick="ktp(' . $model->id . ')" class="btn btn-outline-dark btn-icon btn-elevate flaticon-eye" data-toggle="modal"></button>';
+                            
+                            return $ktp;
+                        })
+                        ->addColumn('kk', function($model) {
+                            $kk = '<button type="button" onclick="kk(' . $model->id . ')" class="btn btn-outline-dark btn-icon btn-elevate flaticon-eye" data-toggle="modal"></button>';
+                            
+                            return $kk;
+                        })
+                        ->addColumn('npwp', function($model) {
+                            $npwp = '<button type="button" onclick="npwp(' . $model->id . ')" class="btn btn-outline-dark btn-icon btn-elevate flaticon-eye" data-toggle="modal"></button>';
+                            
+                            return $npwp;
+                        })
                         ->addColumn('menu', function($model) {
                             $hapus = '<a onclick="return confirm(\'Apakah anda yakin untuk membatalkan data ini ?\')"  href="'.route('customer-hapus', ['id' => $model->id]).'"><button class="btn btn-outline-dark btn-icon btn-elevate flaticon-delete"></button></a>';
-                            // $update = '<a onclick="return confirm(\'Apakah anda yakin untuk membatalkan data ini ?\')"  href="'.route('customer-update', ['id' => $model->id, 'id_keperluan' => $model->id_keperluan]).'" class="flaticon-edit"></a>';
-                            
-                            // $recid = $model->id . '.' . $model->id_keperluan;
 
-                            // $update = '<a onclick="update(' . $recid . ')"  class="flaticon-edit" data-toggle="modal"></a>';
                             $edit = '<a href="' . route("customer-link", ['id' => $model->id]) . '"><button class="btn btn-outline-dark btn-icon btn-elevate flaticon-edit"></button></a>';
-
-                            $hitung = '<button type="button" onclick="detail(' . $model->id . ')" class="btn btn-outline-dark btn-icon btn-elevate flaticon-eye" data-toggle="modal"></button>';
                             
                             if (Auth::user()->tipe == "Admin") {
-                                return $hapus . '&nbsp;' . $edit  . '&nbsp;' . $hitung;
+                                return $hapus . '&nbsp;' . $edit;
                             }else{
                                 return $edit . '&nbsp;' . $hitung;
                             }
                         })
-                        ->rawColumns(['menu'])
+                        ->rawColumns(['foto','ktp','kk','npwp', 'menu'])
                         ->make(true);
     }
 
@@ -98,6 +112,26 @@ class CustomerController extends Controller
     public function detail(Request $req){
 
         $data = Kavling::find($req->id);
+        return response()->json(['data' => $data]);
+    }
+
+    public function foto(Request $req){
+        $data = 'http://localhost/yekape/public/storage/photo/'.$req->id.'.jpg';
+        return response()->json(['data' => $data]);
+    }
+
+    public function ktp(Request $req){
+        $data = 'http://localhost/yekape/public/storage/ktp/'.$req->id.'.jpg';
+        return response()->json(['data' => $data]);
+    }
+
+    public function kk(Request $req){
+        $data = 'http://localhost/yekape/public/storage/kk/'.$req->id.'.jpg';
+        return response()->json(['data' => $data]);
+    }
+
+    public function npwp(Request $req){
+        $data = 'http://localhost/yekape/public/storage/npwp/'.$req->id.'.jpg';
         return response()->json(['data' => $data]);
     }
 
