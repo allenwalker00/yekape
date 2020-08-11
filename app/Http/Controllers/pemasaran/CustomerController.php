@@ -116,22 +116,22 @@ class CustomerController extends Controller
     }
 
     public function foto(Request $req){
-        $data = 'http://localhost/yekape/public/storage/photo/'.$req->id.'.jpg';
+        $data = 'http://127.0.0.1/yekape/public/storage/photo/'.$req->id.'.jpg';
         return response()->json(['data' => $data]);
     }
 
     public function ktp(Request $req){
-        $data = 'http://localhost/yekape/public/storage/ktp/'.$req->id.'.jpg';
+        $data = 'http://127.0.0.1/yekape/public/storage/ktp/'.$req->id.'.jpg';
         return response()->json(['data' => $data]);
     }
 
     public function kk(Request $req){
-        $data = 'http://localhost/yekape/public/storage/kk/'.$req->id.'.jpg';
+        $data = 'http://127.0.0.1/yekape/public/storage/kk/'.$req->id.'.jpg';
         return response()->json(['data' => $data]);
     }
 
     public function npwp(Request $req){
-        $data = 'http://localhost/yekape/public/storage/npwp/'.$req->id.'.jpg';
+        $data = 'http://127.0.0.1/yekape/public/storage/npwp/'.$req->id.'.jpg';
         return response()->json(['data' => $data]);
     }
 
