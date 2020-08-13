@@ -207,7 +207,8 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-sm btn-brand btn-info" id="filter">Tampilkan Data</button>
-							<button type="submit" class="btn btn-sm btn-success">Cetak</button>
+							<button type="submit" class="btn btn-sm btn-success" name="c1" value="1">Cetak</button>
+							<button type="submit" class="btn btn-sm btn-success" name="c2" value="1">Cetak Rekap</button>
 							<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
 						</div>
 					</div>

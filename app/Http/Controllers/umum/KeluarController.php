@@ -109,6 +109,16 @@ class KeluarController extends Controller
 
         // dd($req->all());
 
+        $periode = strtoupper(getNamaBulan(date("m", strtotime($req->tgl_start)))) . ' ' .date("Y", strtotime($req->tgl_start)); // gives 201101
+        // dd($periode);
+
+        $rekap = Keluar::with('keperluan')
+                ->select('id_keperluan', DB::raw('sum(jumlah) as jml'))
+                ->where('batal', 0)
+                ->WhereBetween('tgl_terimabon', [date('Y-m-d',strtotime($req->tgl_start)), date('Y-m-d',strtotime($req->tgl_end))])
+                ->groupBy('id_keperluan')
+                ->get();
+
         if($req->f_keperluan == 0){
             $data = Keluar::select('*')
                     ->where('batal', 0)
@@ -122,10 +132,10 @@ class KeluarController extends Controller
                     ->get();
         }
 
-        
+        // return response()->json($rekap);
 
 
-        PDF::SetTitle('Rekapitulasi Pengajuan Pembayaran');
+        PDF::SetTitle('Laporan Kas Kecil');
         PDF::SetPrintHeader(false);
         PDF::SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
         PDF::SetMargins(15, 15, 15, 15);
@@ -134,8 +144,13 @@ class KeluarController extends Controller
         
         PDF::AddPage('P', 'A4');
         PDF::SetFont('times', '', 9, '', false);
-        PDF::writeHTML(view('umum.keluarcetak',['data' => $data, 'tgl_start' => $req->tgl_start, 'tgl_end' => $req->tgl_end])->render(), true, false, false, false, '');
         
-        return Response::make(PDF::Output('Rekapitulasi Pengajuan Pembayaran', 'I'), 200, array('Content-Type' => 'application/pdf'));
+        if($req->c2 = 1){
+            PDF::writeHTML(view('umum.keluarcetakkategori',['rekap' => $rekap, 'periode' => $periode])->render(), true, false, false, false, '');
+        }else{
+            PDF::writeHTML(view('umum.keluarcetak',['data' => $data, 'tgl_start' => $req->tgl_start, 'tgl_end' => $req->tgl_end])->render(), true, false, false, false, '');
+        }
+        
+        return Response::make(PDF::Output('Laporan Kas Kecil.pdf', 'I'), 200, array('Content-Type' => 'application/pdf'));
     }
 }
