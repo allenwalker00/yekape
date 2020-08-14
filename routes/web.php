@@ -190,3 +190,5 @@ Route::group(['middleware' => ['auth']], function(){
 
 Route::get('pendaftaran/{id?}', ['uses' => 'PendaftaranController@link', 'as' => 'pendaftaran-link']);
 Route::post('pendaftaran-simpan', ['uses' => 'PendaftaranController@simpan', 'as' => 'pendaftaran-simpan']);
+
+Route::get('home/{id?}', ['uses' => 'HomeController@link', 'as' => 'home-link']);
