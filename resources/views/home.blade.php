@@ -20,7 +20,7 @@
         <nav class="light-green darken-2">
           <div class="container">
             <div class="nav-wrapper">
-              <a href="#!" class="brand-logo">PT Yekape Surabaya</a>
+              <a href="#!" class="brand-logo" style="font-size: 100%; font-weight: bold">PT. Yekape Surabaya</a>
               <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
               <ul class="right hide-on-med-and-down">
                 <li><a href="">About Us</a></li>
