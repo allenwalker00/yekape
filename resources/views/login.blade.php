@@ -57,7 +57,7 @@
 		<link href="{{asset('assets/css/demo1/skins/aside/dark.css')}}" rel="stylesheet" type="text/css" />
 
 		<!--end::Layout Skins -->
-		<!-- <link rel="shortcut icon" href="{{asset('assets/lg-original.png')}}" /> -->
+		<link rel="shortcut icon" href="{{asset('assets/lg-original.png')}}" />
 	</head>
 
 	<!-- end::Head -->
@@ -74,7 +74,7 @@
 					<div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside" style="background-image: url({{asset('assets/media/bg/bg-1.jpg);')}}">
 						<div class="kt-grid__item">
 							<a href="#" class="kt-login__logo">
-								<!-- <img alt="Logo" src="{{asset('assets/fkunair.png')}}" height="100" /> -->
+								<img alt="Logo" src="{{asset('assets/lg-original.png')}}" height="150" />
 							</a>
 						</div>
 						<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
