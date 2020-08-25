@@ -88,7 +88,7 @@
 														
 														<div class="form-group">
 															<label>Lokasi</label>
-															<select class="form-control kt-select2" id="cluster" style="width: 100%" required>
+															<select class="form-control" id="cluster" style="width: 100%" required>
 																<option value="">Pilih Lokasi</option>
 							                                    @foreach($cluster as $r)
 						                                    		<option value="{{$r->cluster}}">{{$r->cluster}}</option>
@@ -99,7 +99,7 @@
 															<div class="col-md-6">
 																<div class="form-group">
 																	<label>Letak</label>
-																	<select class="form-control kt-select2" id="letak" style="width: 100%" required>
+																	<select class="form-control" id="letak" style="width: 100%" required>
 																		<option value="">Pilih Letak</option>
 																	</select>
 																</div>
@@ -107,7 +107,7 @@
 															<div class="col-md-6">
 																<div class="form-group">
 																	<label>Tipe</label>
-																	<select class="form-control kt-select2" id="tipe" style="width: 100%" required>
+																	<select class="form-control" id="tipe" style="width: 100%" required>
 																		<option value="">Pilih Tipe</option>
 																	</select>
 																</div>
@@ -117,7 +117,7 @@
 															<div class="col-md-6">
 																<div class="form-group">
 																	<label>Blok</label>
-																	<select class="form-control kt-select2" id="blok" style="width: 100%" required>
+																	<select class="form-control" id="blok" style="width: 100%" required>
 																		<option value="">Pilih Blok</option>
 																	</select>
 																</div>
@@ -125,7 +125,7 @@
 															<div class="col-md-6">
 																<div class="form-group">
 																	<label>Nomor</label>
-																	<select class="form-control kt-select2" id="nomor" name="kavling" style="width: 100%" required>
+																	<select class="form-control" id="nomor" name="kavling" style="width: 100%" required>
 																		<option value="">Pilih Nomor</option>
 																	</select>
 																</div>
