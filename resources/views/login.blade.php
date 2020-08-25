@@ -71,7 +71,7 @@
 				<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
 
 					<!--begin::Aside-->
-					<div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside" style="background-image: url({{asset('assets/media/bg/bg-1.jpg);')}}">
+					<div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside" style="background-image: url({{asset('assets/media/bg/bg-2.jpg);')}}">
 						<div class="kt-grid__item">
 							<a href="#" class="kt-login__logo">
 								<img alt="Logo" src="{{asset('assets/lg-original.png')}}" height="150" />
@@ -109,7 +109,23 @@
 						<div class="kt-login__body">
 
 							<!--begin::Signin-->
-							<div class="kt-login__form">
+							<div class="kt-login__form" id="user">
+								<div class="kt-login__options" style="margin-top: 10px;">
+									<a href="{{route('pendaftaran-link')}}" class="btn btn-success kt-btn">
+										<i class="fa fa-user-plus"></i>
+										Pendaftaran Customer
+									</a>
+								</div>
+								<div class="kt-login__options" style="margin-top: 10px;">
+									<button class="btn btn-success kt-btn form-control" id="bAdmin">
+										<i class="fa fa-cogs"></i>
+										Login Admin
+									</button>
+									<!-- <button type="button" class="btn btn-success btn-elevate kt-login__btn-success" id="back">Login</button> -->
+								</div>
+							</div>
+
+							<div class="kt-login__form kt-hidden" id="admin">
 								<div class="kt-login__title">
 									<h3>Sign In (Admin Only)</h3>
 								</div>
@@ -131,10 +147,11 @@
 
 									<!--begin::Action-->
 									<div class="kt-login__actions">
-										<a href="#" class="kt-link kt-login__link-forgot">
+										<!-- <a href="#" class="kt-link kt-login__link-forgot">
 											&nbsp;
-										</a>
+										</a> -->
 										<button type="submit" class="btn btn-success btn-elevate kt-login__btn-success">Sign In</button>
+										<button type="button" class="btn btn-success btn-elevate kt-login__btn-success" id="back">Back</button>
 									</div>
 
 									<!--end::Action-->
@@ -151,46 +168,6 @@
 									</div>
 								</div>
 								<!--end::Divider-->
-
-								<!--begin::Options-->
-								<!-- <div class="kt-login__options">
-									<a href="" target="_blank" class="btn btn-primary kt-btn">
-										<i class="fa fa-home"></i>
-										Jadwal Ruang
-									</a> -->
-									<!-- <a href="#" class="btn btn-primary kt-btn">
-										<i class="fa fa-home"></i>
-										Jadwal Ruang
-									</a> -->
-									<!-- <a href="#" class="btn btn-info kt-btn">
-										<i class="fab fa-twitter"></i>
-										Twitter
-									</a>
-									<a href="#" class="btn btn-danger kt-btn">
-										<i class="fab fa-google"></i>
-										Google
-									</a> -->
-								<!-- </div> -->
-								<div class="kt-login__options" style="margin-top: 10px;">
-									<a href="{{route('pendaftaran-link')}}" target="_blank" class="btn btn-info kt-btn">
-										<i class="fa fa-list"></i>
-										Pendaftaran Customer
-									</a>
-									<!-- <a href="#" class="btn btn-primary kt-btn">
-										<i class="fa fa-home"></i>
-										Jadwal Ruang
-									</a> -->
-									<!-- <a href="#" class="btn btn-info kt-btn">
-										<i class="fab fa-twitter"></i>
-										Twitter
-									</a>
-									<a href="#" class="btn btn-danger kt-btn">
-										<i class="fab fa-google"></i>
-										Google
-									</a> -->
-								</div>
-
-								<!--end::Options-->
 
 							</div>
 
@@ -251,6 +228,19 @@
 
 		<!--begin::Page Scripts(used by this page) -->
 		<script src="{{asset('assets/js/demo1/pages/login/login-1.js')}}" type="text/javascript"></script>
+		<script type="text/javascript">
+			var s;
+			$(document).ready(function () {
+				$("#bAdmin").click(function(){
+					$("#user").addClass('kt-hidden');
+					$("#admin").removeClass('kt-hidden');
+				});	
+				$("#back").click(function(){
+					$("#admin").addClass('kt-hidden');
+					$("#user").removeClass('kt-hidden');
+				});
+			});
+		</script>
 
 		<!--end::Page Scripts -->
 	</body>

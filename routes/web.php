@@ -145,6 +145,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('pembangunankavling-simpan', ['uses' => 'pembangunan\KavlingController@simpan', 'as' => 'pembangunankavling-simpan']);
     Route::get('pembangunankavling-hapus/{id?}', ['uses' => 'pembangunan\KavlingController@hapus', 'as' => 'pembangunankavling-hapus']);
     Route::post('pembangunankavling-cetak', ['uses' => 'pembangunan\KavlingController@cetak', 'as' => 'pembangunankavling-cetak']);
+    Route::post('pembangunankavling-bycluster', ['uses' => 'pembangunan\KavlingController@pembangunankavling_bycluster', 'as' => 'pembangunankavling-bycluster']);
 
 
     // BAGIAN PEMASARAN
@@ -190,5 +191,9 @@ Route::group(['middleware' => ['auth']], function(){
 
 Route::get('pendaftaran/{id?}', ['uses' => 'PendaftaranController@link', 'as' => 'pendaftaran-link']);
 Route::post('pendaftaran-simpan', ['uses' => 'PendaftaranController@simpan', 'as' => 'pendaftaran-simpan']);
+Route::post('lokasi-bycluster', ['uses' => 'PendaftaranController@lokasi_bycluster', 'as' => 'lokasi-bycluster']);
+Route::post('lokasi-byletak', ['uses' => 'PendaftaranController@lokasi_byletak', 'as' => 'lokasi-byletak']);
+Route::post('lokasi-bytipe', ['uses' => 'PendaftaranController@lokasi_bytipe', 'as' => 'lokasi-bytipe']);
+Route::post('lokasi-byblok', ['uses' => 'PendaftaranController@lokasi_byblok', 'as' => 'lokasi-byblok']);
 
 Route::get('home/{id?}', ['uses' => 'HomeController@link', 'as' => 'home-link']);

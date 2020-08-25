@@ -39,14 +39,9 @@
 						<div class="kt-portlet__head-toolbar">
 							<div class="kt-portlet__head-wrapper">
 								<div class="kt-portlet__head-actions">
-									<button class="btn btn-outline-brand btn-icon btn-sm flaticon2-plus" id="tambah">
-									</button>
-								</div>
-								<div class="kt-portlet__head-actions">
-									&nbsp;
-								</div>
-								<div class="kt-portlet__head-actions">
-									<button class="btn btn-outline-brand btn-icon btn-sm flaticon-more-1" id="b_filter" data-toggle="modal">
+									<button class="btn btn-success btn-elevate btn-icon-sm btn-sm" id="tambah">
+										<i class="la la-plus"></i>
+										Tambah
 									</button>
 								</div>
 							</div>
@@ -54,8 +49,56 @@
 					</div>
 					
 					<div class="kt-portlet__body">
-						<div class="kt-section" id="data-prodi">
+						<div class="kt-section">
 							<div class="kt-section__content">
+								<form class="kt-form kt-form--fit kt-form--label-align-right" method="post" action="" target="_blank">
+								<input type="hidden" name="_token" value="{{csrf_token()}}">
+								<!--begin: Search Form -->
+								<div class="kt-form kt-form--label-right kt-margin-t-20 kt-margin-b-20">
+									<div class="col-xl-12 order-2 order-xl-1">
+										<div class="row">
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Cluster</label>
+													<select class="form-control kt-select2" id="f_cluster" name="f_cluster" style="width: 100%">
+														<option value="0">Semua</option>
+					                                    @foreach($cluster as $r)
+					                                    	<option value="{{$r->cluster}}">{{$r->cluster}}</option>
+					                                    @endforeach
+													</select>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Blok</label>
+													<select class="form-control kt-select2" id="f_blok" name="f_blok" style="width: 100%">
+														<option value="0">Semua</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Status</label>
+													<select class="form-control kt-select2" id="f_status" name="f_status" style="width: 100%">
+														<option value="0">Semua</option>
+					                                    @foreach($status as $r)
+					                                    	<option value="{{$r->id}}">{{$r->keterangan}}</option>
+					                                    @endforeach
+													</select>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>&nbsp;</label>
+													<div class="form-group-append">
+														<button type="button" class="btn btn-success btn-sm" id="filter">FILTER</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								</form>
 								<table class="table table-striped- table-bordered table-hover table-checkable" id="tabel">
 									<thead>
 										<tr>
@@ -96,32 +139,6 @@
 									<input type="hidden" name="_token" value="{{csrf_token()}}">
 									<input type="hidden" name="flag" value="{{($data == null) ? 1 : 2}}">
 									<input type="hidden" name="id" value="{{$data->id or ''}}">
-									<!-- <div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-2">Tanggal Bon</label>
-										<div class="col-md-3">
-											<div class="input-group date">
-												<input type="text" class="form-control {{$data!=null? '' : 'kt_datepicker'}}" value="{{$data->tgl_bon or ''}}" id="tgl_bon" name="tgl_bon" required/>
-												<div class="input-group-append">
-													<span class="input-group-text">
-														<i class="la la-calendar"></i>
-													</span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-2">Tanggal Terima Bon</label>
-										<div class="col-md-3">
-											<div class="input-group date">
-												<input type="text" class="form-control {{$data!=null? '' : 'kt_datepicker'}}" value="{{$data->tgl_terimabon or ''}}" id="tgl_terimabon" name="tgl_terimabon" required/>
-												<div class="input-group-append">
-													<span class="input-group-text">
-														<i class="la la-calendar"></i>
-													</span>
-												</div>
-											</div>
-										</div>
-									</div> -->
 									<div class="form-group kt-form__group row">
 										<label class="col-form-label col-md-2">Cluster</label>
 										<div class="col-md-6">
@@ -162,45 +179,6 @@
 											<input type="text" class="form-control kt-input kt-input--air currency" name="luas_tanah" id="luas_tanah" value="{{$data->luas_tanah or ''}}" required {{$data == null ? "" : "readonly" }}>
 										</div>
 									</div>
-									<!-- <div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-2">Status</label>
-										<div class="col-md-3">
-											<select class="form-control kt-select2" id="status" name="status" style="width: 100%" required>
-												<option value="">Pilih Status</option>
-			                                    @foreach($status as $r)
-			                                    @if($data != null && $data->id_status == $r->id)
-			                                    	<option value="{{$r->id}}" selected="">{{$r->keterangan}}</option>
-			                                    @else
-			                                    	<option value="{{$r->id}}">{{$r->keterangan}}</option>
-			                                    @endif
-			                                    @endforeach
-											</select>
-										</div>
-									</div>
-									<div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-2">Nama Pemesan</label>
-										<div class="col-md-6">
-											<input type="text" class="form-control kt-input kt-input--air" name="nama_pemesan" id="nama_pemesan" value="{{$data->nama_pemesan or ''}}" required {{$data == null ? "" : "readonly" }} style="text-transform: uppercase;">
-										</div>
-									</div>
-									<div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-2">Telepon Pemesan</label>
-										<div class="col-md-6">
-											<input type="text" class="form-control kt-input kt-input--air" name="telp_pemesan" id="telp_pemesan" value="{{$data->telp_pemesan or ''}}" required {{$data == null ? "" : "readonly" }} style="text-transform: uppercase;">
-										</div>
-									</div>
-									<div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-2">Keterangan</label>
-										<div class="col-md-6">
-											<textarea class="form-control" id="keterangan" name="keterangan" rows="3" required>{{$data->keterangan or ''}}</textarea>
-										</div>
-									</div>
-									<div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-2">Harga KPR (Rp)</label>
-										<div class="col-md-3">
-											<input type="text" class="form-control kt-input kt-input--air currency" name="harga_kpr" id="harga_kpr" value="{{$data->harga_kpr or ''}}" required {{$data == null ? "" : "readonly" }}>
-										</div>
-									</div> -->
 									<div class="form-group kt-form__group row">
 										<label class="col-form-label col-md-2">List</label>
 										<div class="col-md-6">
@@ -238,140 +216,6 @@
 					</div>
 				</div>
 			</div>
-			<form class="modal fade" id="modal_filter" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" method="post" action="{{route('pembangunankavling-cetak')}}" target="_blank">
-			<input type="hidden" name="_token" value="{{csrf_token()}}">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="">Filter</h5>
-						</div>
-						<div class="modal-body">
-							<div class="form-group">
-								<div class="col-md-12">
-									<div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-4">Cluster</label>
-										<div class="col-md-8">
-											<select class="form-control kt-select2" id="f_cluster" name="f_cluster" style="width: 100%">
-												<option value="0">Pilih Clusters (Semua)</option>
-			                                    @foreach($cluster as $r)
-			                                    	<option value="{{$r->cluster}}">{{$r->cluster}}</option>
-			                                    @endforeach
-											</select>
-										</div>
-									</div>
-									<div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-4">status</label>
-										<div class="col-md-8">
-											<select class="form-control kt-select2" id="f_status" name="f_status" style="width: 100%">
-												<option value="0">Pilih Status (Semua)</option>
-			                                    @foreach($status as $r)
-			                                    	<option value="{{$r->id}}">{{$r->keterangan}}</option>
-			                                    @endforeach
-											</select>
-										</div>
-									</div>
-									<!-- <div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-4">Tanggal Terima Bon</label>
-										<div class="col-md-8">
-											<div class="input-group date">
-												<input type="text" class="form-control kt_datepicker" value="{{date('Y-m-d')}}" id="tgl_start" name="tgl_start" required/>
-												<div class="input-group-append">
-													<span class="input-group-text">
-														<i class="la la-calendar"></i>
-													</span>
-												</div>
-											</div>
-											<div class="input-group date">
-												<input type="text" class="form-control kt_datepicker" value="{{date('Y-m-d')}}" id="tgl_end" name="tgl_end" required/>
-												<div class="input-group-append">
-													<span class="input-group-text">
-														<i class="la la-calendar"></i>
-													</span>
-												</div>
-											</div>
-										</div>
-									</div> -->
-								</div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-sm btn-brand btn-info" id="filter">Tampilkan Data</button>
-							<button type="submit" class="btn btn-sm btn-success">Cetak</button>
-							<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-						</div>
-					</div>
-				</div>
-			</form>
-
-			<!-- <form class="modal fade" id="modal_update" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" method="post" action="{{route('pembangunankavling-simpan')}}" target="_blank">
-			<input type="hidden" name="_token" value="{{csrf_token()}}">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="">Update Data</h5>
-						</div>
-						<div class="modal-body">
-							<div class="form-group">
-								<div class="col-md-12">
-									<div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-4">Tanggal Bon</label>
-										<div class="col-md-8">
-											<div class="input-group date">
-												<input type="text" class="form-control kt_datepicker" value="{{$data->tgl_bon or ''}}" id="mtgl_bon" name="mtgl_bon" readonly />
-												<div class="input-group-append">
-													<span class="input-group-text">
-														<i class="la la-calendar"></i>
-													</span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-4">Tanggal Terima Bon</label>
-										<div class="col-md-8">
-											<div class="input-group date">
-												<input type="text" class="form-control kt_datepicker" value="{{$data->tgl_terimabon or ''}}" id="mtgl_terimabon" name="mtgl_terimabon" readonly/>
-												<div class="input-group-append">
-													<span class="input-group-text">
-														<i class="la la-calendar"></i>
-													</span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-4">status</label>
-										<div class="col-md-6">
-											<select class="form-control kt-select2" id="mstatus" name="mstatus" style="width: 100%" required>
-												<option value="">Pilih status</option>
-			                                    @foreach($status as $r)
-			                                    	<option value="{{$r->id}}">{{$r->keterangan}}</option>
-			                                    @endforeach
-											</select>
-										</div>
-									</div>
-									<div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-4">Keterangan</label>
-										<div class="col-md-6">
-											<textarea class="form-control" id="mketerangan" name="mketerangan" rows="8" readonly>{{$data->keterangan or ''}}</textarea>
-										</div>
-									</div>
-									<div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-4">Jumlah (Rp)</label>
-										<div class="col-md-8">
-											<input type="text" class="form-control kt-input kt-input--air currency" name="mjumlah" id="mjumlah" readonly>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-sm btn-success">Simpan</button>
-							<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-						</div>
-					</div>
-				</div>
-			</form> -->
 		</div>
 		<!--end::Portlet-->
 	</div>
@@ -417,7 +261,7 @@
 			"responsive": true,
 	        "processing": true,
 	        "serverSide": true,
-	        "ajax": "{{ route('pembangunankavling-data',['filter' => '0;0']) }}",
+	        "ajax": "{{ route('pembangunankavling-data',['filter' => '0;0;0']) }}",
 	        "columns": [
 	            {data: 'id', visible: false},
 	            {data: 'cluster', defaultContent: '-'},
@@ -435,7 +279,7 @@
 	    
 	    $("#filter").click(function(){
 	    	// alert($('#tgl_start').val());
-	    	var url = "{{ url('pembangunankavling-data') }}/" + $('#f_cluster').val() + ";" + $('#f_status').val();
+	    	var url = "{{ url('pembangunankavling-data') }}/" + $('#f_cluster').val() + ";" + $('#f_blok').val()+ ";" + $('#f_status').val();
 	    	// alert(url);
 			$('#tabel').DataTable().ajax.url(url).load();
 			$("#modal_filter").modal('hide');
@@ -461,6 +305,33 @@
 			var rp = formatRupiah(this.value);
 			$(this).val(rp);
 		});
+
+		$("#f_cluster").change(function(){
+	        var token = '{{csrf_token()}}';
+	        var cluster = $('#f_cluster option:selected').val();
+
+	        if (cluster == ''){
+	        	$('#f_blok').empty();
+	        	$("#f_blok").append('<option value="">Semua</option>');
+	        }else{
+	        	$.ajax({
+		            url: "{{route('pembangunankavling-bycluster')}}",
+		            type: 'POST',
+		            headers: {'X-CSRF-TOKEN': token},
+		            data: {cluster: cluster},
+		            cache: false,
+		            
+		            success: function (result) {
+		                $('#f_blok').empty();
+			        	$("#f_blok").append('<option value="">Semua</option>');
+						for(i = 0; i < result.data.length; i++){
+		                    $("#f_blok").append('<option value="'+result.data[i]['blok']+'">'+ result.data[i]['blok'] +'</option>');
+		                }
+		            }
+		        });
+	        }
+
+	    });
 	   
 	});	
 

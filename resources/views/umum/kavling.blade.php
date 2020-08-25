@@ -46,28 +46,57 @@
 					</div>
 					
 					<div class="kt-portlet__body">
-						<div class="kt-section" id="data-prodi">
+						<div class="kt-section">
 							<div class="kt-section__content">
+								<form class="kt-form kt-form--fit kt-form--label-align-right" method="post" action="" target="_blank">
+								<input type="hidden" name="_token" value="{{csrf_token()}}">
+								<!--begin: Search Form -->
+								<div class="kt-form kt-form--label-right kt-margin-t-20 kt-margin-b-20">
+									<div class="col-xl-12 order-2 order-xl-1">
+										<div class="row">
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Cluster</label>
+													<select class="form-control kt-select2" id="f_cluster" name="f_cluster" style="width: 100%">
+														<option value="0">Semua</option>
+					                                    @foreach($cluster as $r)
+					                                    	<option value="{{$r->cluster}}">{{$r->cluster}}</option>
+					                                    @endforeach
+													</select>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Blok</label>
+													<select class="form-control kt-select2" id="f_blok" name="f_blok" style="width: 100%">
+														<option value="0">Semua</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Status</label>
+													<select class="form-control kt-select2" id="f_status" name="f_status" style="width: 100%">
+														<option value="0">Semua</option>
+					                                    @foreach($status as $r)
+					                                    	<option value="{{$r->id}}">{{$r->keterangan}}</option>
+					                                    @endforeach
+													</select>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>&nbsp;</label>
+													<div class="form-group-append">
+														<button type="button" class="btn btn-success btn-sm" id="filter">FILTER</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								</form>
 								<table class="table table-striped- table-bordered table-hover table-checkable" id="tabel">
-									<thead>
-										<tr>
-											<th>ID</th>
-											<th>Cluster</th>
-											<th>Blok</th>
-											<th>Nomor</th>
-											<th>Tipe</th>
-											<th>Luas Bangun</th>
-											<th>Luas Tanah</th>
-											<th>Harga KPR</th>
-											<th>Status</th>
-											<th>Nama Pemesan</th>
-											<th>Telp Pemesan</th>
-											<th>Keterangan</th>
-											<th>Menu</th>
-										</tr>
-									</thead>
-									<tbody>
-									</tbody>
 								</table>
 							</div>
 						</div>
@@ -184,70 +213,6 @@
 					</div>
 				</div>
 			</div>
-			<form class="modal fade" id="modal_filter" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" method="post" action="{{route('umumkavling-cetak')}}" target="_blank">
-			<input type="hidden" name="_token" value="{{csrf_token()}}">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="">Filter</h5>
-						</div>
-						<div class="modal-body">
-							<div class="form-group">
-								<div class="col-md-12">
-									<div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-4">Cluster</label>
-										<div class="col-md-8">
-											<select class="form-control kt-select2" id="f_cluster" name="f_cluster" style="width: 100%">
-												<option value="0">Pilih Clusters (Semua)</option>
-			                                    @foreach($cluster as $r)
-			                                    	<option value="{{$r->cluster}}">{{$r->cluster}}</option>
-			                                    @endforeach
-											</select>
-										</div>
-									</div>
-									<div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-4">status</label>
-										<div class="col-md-8">
-											<select class="form-control kt-select2" id="f_status" name="f_status" style="width: 100%">
-												<option value="0">Pilih Status (Semua)</option>
-			                                    @foreach($status as $r)
-			                                    	<option value="{{$r->id}}">{{$r->keterangan}}</option>
-			                                    @endforeach
-											</select>
-										</div>
-									</div>
-									<!-- <div class="form-group kt-form__group row">
-										<label class="col-form-label col-md-4">Tanggal Terima Bon</label>
-										<div class="col-md-8">
-											<div class="input-group date">
-												<input type="text" class="form-control kt_datepicker" value="{{date('Y-m-d')}}" id="tgl_start" name="tgl_start" required/>
-												<div class="input-group-append">
-													<span class="input-group-text">
-														<i class="la la-calendar"></i>
-													</span>
-												</div>
-											</div>
-											<div class="input-group date">
-												<input type="text" class="form-control kt_datepicker" value="{{date('Y-m-d')}}" id="tgl_end" name="tgl_end" required/>
-												<div class="input-group-append">
-													<span class="input-group-text">
-														<i class="la la-calendar"></i>
-													</span>
-												</div>
-											</div>
-										</div>
-									</div> -->
-								</div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-sm btn-brand btn-info" id="filter">Tampilkan Data</button>
-							<button type="submit" class="btn btn-sm btn-success">Cetak</button>
-							<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-						</div>
-					</div>
-				</div>
-			</form>
 
 			<form class="modal fade" id="modal_hitung" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" target="_blank">
 				<div class="modal-dialog" role="document">
@@ -433,44 +398,26 @@
 
 		$('.kt-select2').select2();
 
-		var x = $('#tabel').DataTable({
+		$('#tabel').DataTable({
 			"responsive": true,
 	        "processing": true,
 	        "serverSide": true,
 	        "ajax": "{{ route('umumkavling-data',['filter' => '0;0;']) }}",
 	        "columns": [
-	            {data: 'id', visible: false},
-	            {data: 'cluster', defaultContent: '-'},
-	            {data: 'blok', defaultContent: '-'},
-	            {data: 'nomor', defaultContent: '-'},
-	            {data: 'tipe', defaultContent: '-'},
-	            {data: 'luas_bangun', defaultContent: '-'},
-	            {data: 'luas_tanah', defaultContent: '-'},
-	            {data: 'harga_kpr', defaultContent: '-', render: $.fn.dataTable.render.number(',', '.', 0, 'Rp. '), className: 'text-right'},
-	            {data: 'kavlingstatus.keterangan', defaultContent: '-'},
-	            {data: 'nama_pemesan', defaultContent: '-'},
-	            {data: 'telp_pemesan', defaultContent: '-'},
-	            {data: ',keterangan', defaultContent: '-'},
-	            {data: 'menu', orderable: false, searchable: false},
-	        ],
-
-	     //    @if ( Auth::user()->tipe == 'Admin')
-	     //    	"columnDefs": [ {
-		    //         "targets": 3,
-			   //          render: function (data, type, row, meta){
-						// 	var $select = $("<select class='pilihan form-control kt-select2' id='pilihan'><option value='0'>--Pilihan--</option>@foreach($status as $r)<option value='{{$r->id}}'>{{$r->keterangan}}</option>@endforeach</select>");
-						//   	$select.find('option[value="'+row.id_status+'"]').attr('selected', 'selected');
-
-						// 	return $select[0].outerHTML
-						// }
-		    //     } ],
-		        // "columnDefs": [ {
-		        //     "targets": -1,
-		        //     "data": null,
-		        //     "defaultContent": "<button>Click!</button>"
-	        	// } ]
-	        @endif
-	        
+	            {title: 'Cluster', data: 'cluster', defaultContent: '-'},
+	            {title: 'Blok', data: 'blok', defaultContent: '-'},
+	            {title: 'Nomor', data: 'nomor', defaultContent: '-'},
+	            {title: 'Tipe', data: 'tipe', defaultContent: '-'},
+	            {title: 'LB', data: 'luas_bangun', defaultContent: '-'},
+	            {title: 'LT', data: 'luas_tanah', defaultContent: '-'},
+	            {title: 'Harga KPR', data: 'harga_kpr', defaultContent: '-', render: $.fn.dataTable.render.number(',', '.', 0, 'Rp. '), className: 'text-right'},
+	            {title: 'Status', data: 'kavlingstatus.keterangan', defaultContent: '-'},
+	            {title: 'Nama Pemesan', data: 'customer.nama', defaultContent: '-'},
+	            {title: 'Telp', data: 'customer.telp', defaultContent: '-'},
+	            {title: 'Tgl Booking', data: 'tgl_booking', defaultContent: '-'},
+	            {title: 'Keterangan', data: ',keterangan', defaultContent: '-'},
+	            // {title: 'Menu', data: 'menu', orderable: false, searchable: false},
+	        ],	        
 	    });
 
 	  //   $('#tabel tbody').on( 'click', 'button', function () {
@@ -488,10 +435,9 @@
 	    
 	    $("#filter").click(function(){
 	    	// alert($('#tgl_start').val());
-	    	var url = "{{ url('pembangunankavling-data') }}/" + $('#f_cluster').val() + ";" + $('#f_status').val();
+	    	var url = "{{ url('umumkavling-data') }}/" + $('#f_cluster').val() + ";" + $('#f_blok').val()+ ";" + $('#f_status').val();
 	    	// alert(url);
 			$('#tabel').DataTable().ajax.url(url).load();
-			$("#modal_filter").modal('hide');
 
 
 	    });
@@ -517,6 +463,33 @@
 			// $('#tabel').DataTable().ajax.url(url).load();
 			// $("#modal_filter").modal('hide');
 
+
+	    });
+
+	    $("#f_cluster").change(function(){
+	        var token = '{{csrf_token()}}';
+	        var cluster = $('#f_cluster option:selected').val();
+
+	        if (cluster == ''){
+	        	$('#f_blok').empty();
+	        	$("#f_blok").append('<option value="">Semua</option>');
+	        }else{
+	        	$.ajax({
+		            url: "{{route('pembangunankavling-bycluster')}}",
+		            type: 'POST',
+		            headers: {'X-CSRF-TOKEN': token},
+		            data: {cluster: cluster},
+		            cache: false,
+		            
+		            success: function (result) {
+		                $('#f_blok').empty();
+			        	$("#f_blok").append('<option value="">Semua</option>');
+						for(i = 0; i < result.data.length; i++){
+		                    $("#f_blok").append('<option value="'+result.data[i]['blok']+'">'+ result.data[i]['blok'] +'</option>');
+		                }
+		            }
+		        });
+	        }
 
 	    });
 	   

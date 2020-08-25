@@ -23,7 +23,7 @@ class KavlingController extends Controller
         }
 
         $status = KavlingStatus::get();
-        $cluster = Kavling::select('cluster')->groupBy('cluster')->get();
+        $cluster = Kavling::select('cluster')->where('batal', 0)->groupBy('cluster')->get();
         // dd($cluster);
 
         return view('pembangunan.kavling', ['data' => $data, 'status' => $status, 'cluster' => $cluster]);
@@ -55,8 +55,12 @@ class KavlingController extends Controller
         	$query->where('cluster', 'LIKE', '%'.$f[0].'%');
         }
 
-        if ($f[1] != 0) {
-        	$query->where('status', $f[1]);
+        if ($f[1] != "0") {
+            $query->where('blok', 'LIKE', '%'.$f[1].'%');
+        }
+
+        if ($f[2] != 0) {
+        	$query->where('status', $f[2]);
         }
 
         $query->get();
@@ -98,7 +102,8 @@ class KavlingController extends Controller
 	            $data->tipe = $req->tipe;
 	            $data->luas_bangun = str_replace('.', '', $req->luas_bangun);
 	            $data->luas_tanah = str_replace('.', '', $req->luas_tanah);
-	            $data->user_entry = Auth::user()->username;
+                $data->user_entry = Auth::user()->username;
+	            $data->batal = 0;
 	            $data->doc = date('Y-m-d H:i:s');
 	            $data->save();
         	}else{
@@ -119,24 +124,26 @@ class KavlingController extends Controller
 		            $data->luas_bangun = str_replace('.', '', $luas_bangun);
 		            $data->luas_tanah = str_replace('.', '', $luas_tanah);
 		            $data->user_entry = Auth::user()->username;
+                    $data->batal = 0;
 		            $data->doc = date('Y-m-d H:i:s');
 		            $data->save();
                 }
         	}
         	
         }else{
-            $data = Keluar::find($req->id);
-            $data->id_keperluan = $req->keperluan;
-            $data->keterangan = $req->keterangan;
-            $data->save();
+            // $data = Keluar::find($req->id);
+            // $data->id_keperluan = $req->keperluan;
+            // $data->keterangan = $req->keterangan;
+            // $data->save();
         }
         
         return redirect()->route('pembangunankavling-link');
     }
 
     public function hapus($id){
-        $data = Keluar::find($id);
+        $data = Kavling::find($id);
         $data->batal = 1;
+        $data->user_batal = Auth::user()->username;
         $data->tgl_batal = date('Y-m-d H:i:s');
         $data->update();
 
@@ -185,5 +192,20 @@ class KavlingController extends Controller
         PDF::writeHTML(view('umum.keluarcetak',['data' => $data, 'tgl_start' => $req->tgl_start, 'tgl_end' => $req->tgl_end])->render(), true, false, false, false, '');
         
         return Response::make(PDF::Output('Rekapitulasi Pengajuan Pembayaran', 'I'), 200, array('Content-Type' => 'application/pdf'));
+    }
+
+    public function pembangunankavling_bycluster(Request $request){
+        $cluster = $request->cluster;
+        if($cluster == 'null'){
+            $data = null;
+        }else{
+            $data = Kavling::select('blok')
+                    ->where('batal', 0)
+                    ->where('status', null)
+                    ->where('cluster', $cluster)
+                    ->groupBy('blok')
+                    ->get();
+        }
+        return response()->json(['data' => $data]);
     }
 }

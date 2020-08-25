@@ -22,7 +22,7 @@ class KavlingController extends Controller
             $data = Kavling::find($id);
         }
         $status = KavlingStatus::get();
-        $cluster = Kavling::select('cluster')->groupBy('cluster')->get();
+        $cluster = Kavling::select('cluster')->where('batal', 0)->groupBy('cluster')->get();
         // dd($cluster);
 
         // dd(Auth::user());
@@ -34,14 +34,18 @@ class KavlingController extends Controller
     {
         $f = explode(';', $filter);
 
-        $query = Kavling::with('kavlingstatus')->where('batal', 0);
+        $query = Kavling::with('kavlingstatus', 'customer')->where('batal', 0);
         
         if ($f[0] != "0") {
             $query->where('cluster', 'LIKE', '%'.$f[0].'%');
         }
 
-        if ($f[1] != 0) {
-            $query->where('status', $f[1]);
+        if ($f[1] != "0") {
+            $query->where('blok', 'LIKE', '%'.$f[1].'%');
+        }
+
+        if ($f[2] != 0) {
+            $query->where('status', $f[2]);
         }
 
         $query->get();

@@ -108,13 +108,13 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!-- begin:: Header Mobile -->
 		<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 			<div class="kt-header-mobile__logo">
-				<a href="demo2/index.html">
-					<!-- <img alt="Logo" src="{{asset('assets/fkunair.png')}}" /> -->
+				<a href="{{url('')}}">
+					<img alt="Logo" src="{{asset('assets/lg-original-2.png')}}" height="45" class="kt-header__brand-logo-default" />
 				</a>
 			</div>
 			<div class="kt-header-mobile__toolbar">
-				<button class="kt-header-mobile__toolbar-toggler" id="kt_header_mobile_toggler"><span></span></button>
-				<button class="kt-header-mobile__toolbar-topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more-1"></i></button>
+				<!-- <button class="kt-header-mobile__toolbar-toggler" id="kt_header_mobile_toggler"><span></span></button> -->
+				<!-- <button class="kt-header-mobile__toolbar-topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more-1"></i></button> -->
 			</div>
 		</div>
 
@@ -131,9 +131,9 @@ License: You must have a valid license purchased only from themeforest(the above
 								<!-- begin:: Brand -->
 								<div class="kt-header__brand   kt-grid__item" id="kt_header_brand">
 									<div class="kt-header__brand-logo">
-										<a href="demo2/index.html">
-											<!-- <img alt="Logo" src="{{asset('assets/fkunair.png')}}" height="100" class="kt-header__brand-logo-default" /> -->
-											<!-- <img alt="Logo" src="{{asset('assets/fkunair.png')}}" height="50" class="kt-header__brand-logo-sticky" /> -->
+										<a href="{{url('')}}">
+											<img alt="Logo" src="{{asset('assets/lg-original-2.png')}}" height="80" class="kt-header__brand-logo-default" />
+											<!-- <img alt="Logo" src="{{asset('assets/lg-original-2.png')}}" height="80" class="kt-header__brand-logo-sticky" /> -->
 										</a>
 									</div>
 								</div>

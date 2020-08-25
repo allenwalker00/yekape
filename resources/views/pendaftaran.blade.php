@@ -45,18 +45,26 @@
 										<!--begin: Form Wizard Nav -->
 										<div class="kt-wizard-v3__nav">
 											<div class="kt-wizard-v3__nav-items">
-												<a class="kt-wizard-v3__nav-item" href="" data-ktwizard-type="step" data-ktwizard-state="current">
+												<a class="kt-wizard-v3__nav-item" href="{{url('pendaftaran#s1')}}" data-ktwizard-type="step" data-ktwizard-state="current">
 													<div class="kt-wizard-v3__nav-body">
 														<div class="kt-wizard-v3__nav-label">
-															<span>1</span> Data Diri
+															<span>1</span> Pilih Unit
 														</div>
 														<div class="kt-wizard-v3__nav-bar"></div>
 													</div>
 												</a>
-												<a class="kt-wizard-v3__nav-item" href="" data-ktwizard-type="step">
+												<a class="kt-wizard-v3__nav-item" href="{{url('pendaftaran#s2')}}" data-ktwizard-type="step" data-ktwizard-state="current">
 													<div class="kt-wizard-v3__nav-body">
 														<div class="kt-wizard-v3__nav-label">
-															<span>2</span> Dokumen Pelengkap
+															<span>2</span> Data Diri
+														</div>
+														<div class="kt-wizard-v3__nav-bar"></div>
+													</div>
+												</a>
+												<a class="kt-wizard-v3__nav-item" href="{{url('pendaftaran#s3')}}" data-ktwizard-type="step">
+													<div class="kt-wizard-v3__nav-body">
+														<div class="kt-wizard-v3__nav-label">
+															<span>3</span> Dokumen Pelengkap
 														</div>
 														<div class="kt-wizard-v3__nav-bar"></div>
 													</div>
@@ -71,11 +79,71 @@
 										<!--begin: Form Wizard Form-->
 										<form class="kt-form" id="kt_form" method="post" action="{{route('pendaftaran-simpan')}}" enctype="multipart/form-data">
 											<input type="text" class="kt-hide" name="_token" value="{{csrf_token()}}">
-											<!--begin: Form Wizard Step 1-->
-											<div class="kt-wizard-v3__content" data-ktwizard-type="step-content" data-ktwizard-state="current">
+											<div class="kt-wizard-v3__content" data-ktwizard-type="step-content" data-ktwizard-state="current" id="s1">
+												<div class="kt-form__section kt-form__section--first">
+													<div class="kt-wizard-v3__form">
+														<div class="form-group">
+															<img alt="Logo" src="{{asset('assets/ykp.jpeg')}}" style="width: 100%; height: auto;" class="kt-header__brand-logo-default"/>
+														</div>
+														
+														<div class="form-group">
+															<label>Lokasi</label>
+															<select class="form-control kt-select2" id="cluster" style="width: 100%" required>
+																<option value="">Pilih Lokasi</option>
+							                                    @foreach($cluster as $r)
+						                                    		<option value="{{$r->cluster}}">{{$r->cluster}}</option>
+							                                    @endforeach
+															</select>
+														</div>
+														<div class="row" id="rowletak">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label>Letak</label>
+																	<select class="form-control kt-select2" id="letak" style="width: 100%" required>
+																		<option value="">Pilih Letak</option>
+																	</select>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label>Tipe</label>
+																	<select class="form-control kt-select2" id="tipe" style="width: 100%" required>
+																		<option value="">Pilih Tipe</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="row" id="rowblok">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label>Blok</label>
+																	<select class="form-control kt-select2" id="blok" style="width: 100%" required>
+																		<option value="">Pilih Blok</option>
+																	</select>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label>Nomor</label>
+																	<select class="form-control kt-select2" id="nomor" name="kavling" style="width: 100%" required>
+																		<option value="">Pilih Nomor</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<!--begin: Form Wizard Step 2-->
+											<div class="kt-wizard-v3__content" data-ktwizard-type="step-content" data-ktwizard-state="current" id="s2">
 												<div class="kt-heading kt-heading--md">Isi Data Diri Anda</div>
 												<div class="kt-form__section kt-form__section--first">
 													<div class="kt-wizard-v3__form">
+														<div class="form-group">
+															<label>No KTP</label>
+															<input type="text" class="form-control" name="noktp" required>
+														</div>
 														<div class="form-group">
 															<label>Nama</label>
 															<input type="text" class="form-control" name="nama" required>
@@ -85,13 +153,13 @@
 															<input type="text" class="form-control" name="jalan" required>
 														</div>
 														<div class="row">
-															<div class="col-xl-6">
+															<div class="col-md-6">
 																<div class="form-group">
 																	<label>Kelurahan</label>
 																	<input type="text" class="form-control" name="kel" required>
 																</div>
 															</div>
-															<div class="col-xl-6">
+															<div class="col-md-6">
 																<div class="form-group">
 																	<label>Kecamatan</label>
 																	<input type="text" class="form-control" name="kec" required>
@@ -99,13 +167,13 @@
 															</div>
 														</div>
 														<div class="row">
-															<div class="col-xl-6">
+															<div class="col-md-6">
 																<div class="form-group">
 																	<label>Kabupaten/Kota</label>
 																	<input type="text" class="form-control" name="kab" required>
 																</div>
 															</div>
-															<div class="col-xl-6">
+															<div class="col-md-6">
 																<div class="form-group">
 																	<label>Provinsi</label>
 																	<input type="text" class="form-control" name="prov" required>
@@ -113,13 +181,13 @@
 															</div>
 														</div>
 														<div class="row">
-															<div class="col-xl-6">
+															<div class="col-md-6">
 																<div class="form-group">
 																	<label>Tempat Lahir</label>
 																	<input type="text" class="form-control" name="tmp_lahir" required>
 																</div>
 															</div>
-															<div class="col-xl-6">
+															<div class="col-md-6">
 																<div class="form-group">
 																	<label>Tanggal Lahir</label>
 																	<div class="input-group date">
@@ -134,13 +202,13 @@
 															</div>
 														</div>
 														<div class="row">
-															<div class="col-xl-6">
+															<div class="col-md-6">
 																<div class="form-group">
 																	<label>Telephone</label>
 																	<input type="text" class="form-control" name="telp" required>
 																</div>
 															</div>
-															<div class="col-xl-6">
+															<div class="col-md-6">
 																<div class="form-group">
 																	<label>Email</label>
 																	<input type="text" class="form-control" name="email" required>
@@ -151,13 +219,13 @@
 												</div>
 											</div>
 
-											<!--begin: Form Wizard Step 2-->
-											<div class="kt-wizard-v3__content" data-ktwizard-type="step-content">
+											<!--begin: Form Wizard Step 3-->
+											<div class="kt-wizard-v3__content" data-ktwizard-type="step-content" id="s3">
 												<div class="kt-heading kt-heading--md">Upload Dokumen Pendukung</div>
 												<div class="kt-form__section kt-form__section--first">
 													<div class="kt-wizard-v3__form">
 														<div class="row">
-															<div class="col-xl-6">
+															<div class="col-md-6">
 																<div class="form-group">
 																	<label>Photo</label>
 																	<div class="custom-file">
@@ -166,7 +234,7 @@
 																	</div>
 																</div>
 															</div>
-															<div class="col-xl-6">
+															<div class="col-md-6">
 																<div class="form-group">
 																	<label>KTP</label>
 																	<div class="custom-file">
@@ -177,7 +245,7 @@
 															</div>
 														</div>
 														<div class="row">
-															<div class="col-xl-6">
+															<div class="col-md-6">
 																<div class="form-group">
 																	<label>KK</label>
 																	<div class="custom-file">
@@ -186,12 +254,32 @@
 																	</div>
 																</div>
 															</div>
-															<div class="col-xl-6">
+															<div class="col-md-6">
 																<div class="form-group">
 																	<label>NPWP</label>
 																	<div class="custom-file">
 																		<input type="file" class="custom-file-input" name="npwp" required>
 																		<label class="custom-file-label" id="npwplabel" for="npwp">Choose file</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label>SK Pegawai</label>
+																	<div class="custom-file">
+																		<input type="file" class="custom-file-input" name="sk" required>
+																		<label class="custom-file-label" id="sklabel" for="sk">Choose file</label>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label>Slip Gaji</label>
+																	<div class="custom-file">
+																		<input type="file" class="custom-file-input" name="slipgaji" required>
+																		<label class="custom-file-label" id="slipgajilabel" for="slipgaji">Choose file</label>
 																	</div>
 																</div>
 															</div>
@@ -279,17 +367,150 @@
 			}
 		});
 
-		// Change event
 		wizard.on('change', function(wizard) {
 			KTUtil.scrollTop();	
 		});
 		
 		$('div[data-ktwizard-type="action-submit"]').click(function(){
-			// alert('aa');
 			$("#f_submit").trigger( "click" );
 		});
+
+		$("#cluster").change(function(){
+	        var token = '{{csrf_token()}}';
+	        var cluster = $('#cluster option:selected').val();
+
+	        if (cluster == ''){
+	        	$('#letak').empty();
+	        	$('#tipe').empty();
+	        	$('#blok').empty();
+	        	$('#nomor').empty();
+	        	$("#letak").append('<option value="">Pilih Letak</option>');
+	        	$("#tipe").append('<option value="">Pilih Tipe</option>');
+	        	$("#blok").append('<option value="">Pilih Blok</option>');
+	        	$("#nomor").append('<option value="">Pilih Nomor</option>');
+	        }else{
+	        	$.ajax({
+		            url: "{{route('lokasi-bycluster')}}",
+		            type: 'POST',
+		            headers: {'X-CSRF-TOKEN': token},
+		            data: {cluster: cluster},
+		            cache: false,
+		            
+		            success: function (result) {
+		                $('#letak').empty();
+			        	$('#tipe').empty();
+			        	$('#blok').empty();
+			        	$('#nomor').empty();
+			        	$("#letak").append('<option value="">Pilih Letak</option>');
+			        	$("#tipe").append('<option value="">Pilih Tipe</option>');
+			        	$("#blok").append('<option value="">Pilih Blok</option>');
+			        	$("#nomor").append('<option value="">Pilih Nomor</option>');
+						for(i = 0; i < result.data.length; i++){
+		                    $("#letak").append('<option value="'+result.data[i]['tipe']+'">'+ result.data[i]['tipe'] +'</option>');
+		                }
+		            }
+		        });
+	        }
+
+	    });
+
+	    $("#letak").change(function(){
+	        var token = '{{csrf_token()}}';
+	        var cluster = $('#cluster option:selected').val();
+	        var letak = $('#letak option:selected').val();
+	        if (letak == ''){
+	        	$('#tipe').empty();
+	        	$('#blok').empty();
+	        	$('#nomor').empty();
+	        	$("#tipe").append('<option value="">Pilih Tipe</option>');
+	        	$("#blok").append('<option value="">Pilih Blok</option>');
+	        	$("#nomor").append('<option value="">Pilih Nomor</option>');
+	        }else{
+	        	$.ajax({
+		            url: "{{route('lokasi-byletak')}}",
+		            type: 'POST',
+		            headers: {'X-CSRF-TOKEN': token},
+		            data: {cluster: cluster, letak: letak},
+		            cache: false,
+		            
+		            success: function (result) {
+		                $('#tipe').empty();
+			        	$('#blok').empty();
+			        	$('#nomor').empty();
+			        	$("#tipe").append('<option value="">Pilih Tipe</option>');
+			        	$("#blok").append('<option value="">Pilih Blok</option>');
+			        	$("#nomor").append('<option value="">Pilih Nomor</option>');
+						for(i = 0; i < result.data.length; i++){
+		                    $("#tipe").append('<option value="'+result.data[i]['luas_bangun']+'">'+ result.data[i]['luas_bangun'] +'</option>');
+		                }
+		            }
+		        });
+	        }
+	    });
+
+	    $("#tipe").change(function(){
+	        var token = '{{csrf_token()}}';
+	        var cluster = $('#cluster option:selected').val();
+	        var letak = $('#letak option:selected').val();
+	        var tipe = $('#tipe option:selected').val();
+
+	        if (tipe == ''){
+	        	$('#blok').empty();
+	        	$('#nomor').empty();
+	        	$("#blok").append('<option value="">Pilih Blok</option>');
+	        	$("#nomor").append('<option value="">Pilih Nomor</option>');
+	        }else{
+	        	$.ajax({
+		            url: "{{route('lokasi-bytipe')}}",
+		            type: 'POST',
+		            headers: {'X-CSRF-TOKEN': token},
+		            data: {cluster: cluster, letak: letak, tipe: tipe},
+		            cache: false,
+		            
+		            success: function (result) {
+		                $('#blok').empty();
+			        	$('#nomor').empty();
+			        	$("#blok").append('<option value="">Pilih Blok</option>');
+			        	$("#nomor").append('<option value="">Pilih Nomor</option>');
+						for(i = 0; i < result.data.length; i++){
+		                    $("#blok").append('<option value="'+result.data[i]['blok']+'">'+ result.data[i]['blok'] +'</option>');
+		                }
+		            }
+		        });
+	        }
+	    });
+
+	    $("#blok").change(function(){
+	        var token = '{{csrf_token()}}';
+	        var cluster = $('#cluster option:selected').val();
+	        var letak = $('#letak option:selected').val();
+	        var tipe = $('#tipe option:selected').val();
+	        var blok = $('#blok option:selected').val();
+
+	        if (blok == ''){
+	        	$('#nomor').empty();
+	        	$("#nomor").append('<option value="">Pilih Nomor</option>');
+	        }else{
+	        	$.ajax({
+		            url: "{{route('lokasi-byblok')}}",
+		            type: 'POST',
+		            headers: {'X-CSRF-TOKEN': token},
+		            data: {cluster: cluster, letak: letak, tipe: tipe, blok: blok},
+		            cache: false,
+		            
+		            success: function (result) {
+		                $('#nomor').empty();
+	        			$("#nomor").append('<option value="">Pilih Nomor</option>');
+						for(i = 0; i < result.data.length; i++){
+		                    $("#nomor").append('<option value="'+result.data[i]['id']+'">'+ result.data[i]['nomor'] +'</option>');
+		                }
+		            }
+		        });
+	        }
+	    });
 		
 
 	});
+
 </script>
 @endsection

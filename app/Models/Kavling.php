@@ -13,4 +13,8 @@ class Kavling extends Model
     public function kavlingstatus(){
         return $this->belongsTo('App\Models\KavlingStatus', 'status', 'id');
     }
+
+    public function customer(){
+        return $this->belongsTo('App\Models\Customer', 'id_customer', 'id');
+    }
 }
