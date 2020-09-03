@@ -3,15 +3,12 @@
     <head>
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+      <!-- <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script> -->
+      <!--Import materialize.css-->
       <link href="{{asset('assets/css/materialize.min.css')}}" rel="stylesheet" type="text/css"/>
-      <link href="{{asset('assets/css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection" />
-      <link href="{{asset('assets/css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection" />
-      <link rel="stylesheet" href="{{asset('assets/css/materialize-social.css')}}">
       
       <!-- my css -->
-      <link href="{{asset('assets/css/myStyle.css')}}" rel="stylesheet" type="text/css"/>
+      <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css"/>
       <link rel="shortcut icon" href="{{asset('assets/lg-original.png')}}" />
 
       <!--Let browser know website is optimized for mobile-->
@@ -79,14 +76,14 @@
         <div class="row">
           <h3 class="center light grey-text text-darken-3">About Us</h3>
           <div class="col m6 light">
-            <h5>HISTORY</h5>
+            <h5>Sejarah Yekape</h5>
             <p>Didirikan pada tanggal 15 Februari 1995 oleh Yayasan Kas Pembangunan untuk memenuhi kebutuhan rumah untuk masyarakat surabaya khususnya Aparatur Sipil Negara (ASN) Kota Surabaya yang belum memiliki rumah. </p>
             <p>Seiring berjalannya waktu PT. Yekape saat ini bergerak dengan cakupan yang lebih luas lagi di bidang perumahan untuk Masyarakat Umum terkait kebutuhan rumah dengan Pelayanan Terbaik.</p>
-            <h5>VISI</h5>
-            <p>Menjadi Perusahaan Pengembang yang berkualitas di Kotamadya Surabaya.</p>
           </div>
            <div class="col m6 light">
-            <h5>MISI</h5>
+            <h5>VISI :</h5>
+            <p>Menjadi Perusahaan Pengembang yang berkualitas di Kotamadya Surabaya.</p>
+            <h5>MISI :</h5>
             <table border="0" class="striped responsive">
               <tr>
                 <td>1</td>
@@ -174,34 +171,96 @@
       </div>
       </section>
 
-      <!-- footer -->
-      <footer class="teal darken-3 white-text" id="contact">
+
+      <!-- Contact Us -->
+      <section id="contact" class="contact grey lighten-3 scrollspy">
+      <div class="container">
+        <div class="row">
+          <h3 class="center light grey-text text-darken-3">Contact Us</h3>
           <div class="row">
-            <h3 class="center light text-darken-3">Contact Us</h3>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col m4 s12 center">
-                <p style="margin-bottom: 0; font-weight: bold">Our Office :</p>
-                Jalan Wijaya Kusuma No.36 Surabaya
-                <p style="margin-bottom: 0; font-weight: bold">Telp :</p>
-                (031) 3222 1234
+            <div class="col m5 s12">
+              <div class="card-panel teal darken-3 center white-text">
+                <i class="material-icons">email</i>
+                <h5>Contact</h5>
+                <p>yekape.sby@gmail.com</p>
               </div>
-              <div class="col m4 s12 center center-align">
-                <img alt="Logo" src="{{asset('assets/lg-original.png')}}" height="150" />
-              </div>
-              <div class="col m4 s12" style="text-align: center">
-                <p style="margin-bottom: 0; font-weight: bold">Email :</p>
-                yekape.sby@gmail.com
-                <p style="margin-bottom: 0; font-weight: bold">Connect with us :</p>
-                <p>
-                <a href="https://www.instagram.com/yekapesurabaya/" class="waves-effect waves-light btn-floating social instagram social-icon" target="_blank"><i class="fa fa-instagram"></i> Sign in with instagram</a>
-                <a href="https://www.instagram.com/yekapesurabaya/" class="waves-effect waves-light btn-floating social facebook social-icon" target="_blank"><i class="fa fa-facebook"></i> Sign in with instagram</a>
-                <p>
+              <ul class="collection with-header">
+                <li class="collection-header">Our Office</li>
+                <li class="collection-item">Jalan Wijaya Kusuma No.36</li>
+                <li class="collection-item">Surabaya</li>
+                <li class="collection-item">031 12312 123123</li>
+              </ul>
+            </div>
+
+            <div class="col m7 s12">
+              <div class="card-panel">
+                <h5>Please Fill this Form to ask Us</h5>
+                <div class="input-field">
+                  <input type="text" name="nama" id="nama">
+                  <label for="nama">Nama</label>
+                </div>
+                <div class="input-field">
+                  <input type="text" name="telp" id="telp">
+                  <label for="telp">No WA</label>
+                </div>
+                <div class="input-field">
+                  <textarea name="question" id="question" class="materialize-textarea"></textarea>
+                  <label for="question">Pertanyaan</label>
+                </div>
+                <button type="submit" class="btn teal darken-3">Send</button>
               </div>
             </div>
           </div>
-      </footer>
+        </div>
+      </div>
+      </section>
+
+      <!-- begin:: Footer -->
+          <div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
+            <div class="kt-container  kt-container--fluid ">
+              <div class="kt-footer__copyright">
+                2019&nbsp;&copy;&nbsp;<a href="http://keenthemes.com/metronic" target="_blank" class="kt-link">Keenthemes</a>
+              </div>
+              <div class="kt-footer__menu">
+                <a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">About</a>
+                <a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Team</a>
+                <a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Contact</a>
+              </div>
+            </div>
+          </div>
+
+
+      <!-- footer -->
+      <!-- <footer class="teal darken-3 white-text">
+        <div class="container">
+          <div class="row">
+            <h3 class="center light text-darken-3">Contact Us</h3>
+          </div>
+          <div class="row">
+            <div class="col m4">
+              <p style="margin-bottom: 0; font-weight: bold">Our Office :</p>
+              Jalan Wijaya Kusuma No.36 Surabaya
+              <p style="margin-bottom: 0; font-weight: bold">Telp :</p>
+              (031) 3222 1234
+            </div>
+            <div class="col m4 center center-align">
+              <img alt="Logo" src="{{asset('assets/lg-original.png')}}" height="150" />
+            </div>
+            <div class="col m4" style="text-align: center">
+              <p style="margin-bottom: 0; font-weight: bold">Email :</p>
+              yekape.sby@gmail.com
+              <p style="margin-bottom: 0; font-weight: bold">Connect with us :</p>
+              <div class="form-group">
+                <label>&nbsp;</label>
+                <div class="form-group-append">
+                  <button type="button" class="btn btn-brand btn-sm" id="filter">FILTER</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- <p class="flow-text">PT. Yekape Surabaya. Copyright 2020.</p> -->
+      <!-- </footer> -->
 
       <!--JavaScript at end of body for optimized loading-->
       <script src="{{asset('assets/js/materialize.min.js')}}" type="text/javascript"></script>

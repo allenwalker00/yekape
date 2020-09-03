@@ -295,7 +295,7 @@
 	    	var luas_bangun = $("#luas_bangun").val();
 	    	var luas_tanah = $("#luas_tanah").val();
 
-			$("#list").append('<tr><td><input type="hidden" name="dlist[]" value="'+ cluster +'#'+ blok +'#'+ nomor +'#'+ tipe +'#'+ luas_bangun +'#'+ luas_tanah +'">'+ cluster +'</td>><td>'+ blok +'</td><td>'+ nomor +'</td><td>'+ tipe +'</td><td>'+ luas_bangun +'</td><td>'+ luas_tanah +'</td><td><button class="btn btn-sm btn-outline-dark btn-icon btn-elevate flaticon-delete" onclick="$(this).parent().parent().remove();"></button></td></tr>')
+			$("#list").append('<tr><td><input type="hidden" name="dlist[]" value="'+ cluster +'#'+ blok +'#'+ nomor +'#'+ tipe +'#'+ luas_bangun +'#'+ luas_tanah +'">'+ cluster +'</td><td>'+ blok +'</td><td>'+ nomor +'</td><td>'+ tipe +'</td><td>'+ luas_bangun +'</td><td>'+ luas_tanah +'</td><td><button class="btn btn-sm btn-outline-dark btn-icon btn-elevate flaticon-delete" onclick="$(this).parent().parent().remove();"></button></td></tr>')
 			
 			$("#nomor").val('');
 		});
