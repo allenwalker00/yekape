@@ -1,7 +1,8 @@
 (function($){
   $(function(){
 
-    $('.button-collapse').sideNav();
+    $('.button-collapse').sidenav();
+    // $('.sidenav').sidenav();
 
   }); // end of document ready
-})(jQuery); // end of jQuery name space
+})(jQuery); // end of jQuery name space`

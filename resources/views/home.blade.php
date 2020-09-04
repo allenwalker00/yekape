@@ -5,7 +5,6 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <link href="{{asset('assets/css/materialize.min.css')}}" rel="stylesheet" type="text/css"/>
       <link href="{{asset('assets/css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection" />
       <link href="{{asset('assets/css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection" />
       <link rel="stylesheet" href="{{asset('assets/css/materialize-social.css')}}">
@@ -20,12 +19,11 @@
     </head>
 
     <body id="home" class="scrollspy">
-    <!-- navbar -->
       <div class="navbar-fixed">
         <nav class="teal darken-3">
           <div class="container">
             <div class="nav-wrapper">
-              <a href="#home" class="brand-logo responsive" style="font-size: 100%;">PT. Yekape Surabaya</a>
+              <a href="{{url('/admin')}}" class="brand-logo responsive" style="font-size: 100%;">PT. Yekape Surabaya</a>
               <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
               <ul class="right hide-on-med-and-down">
                 <li><a href="#about">About Us</a></li>
@@ -52,21 +50,21 @@
           <li>
             <img src="{{asset('assets/img/slider/1.jpg')}}">
             <div class="caption right-align">
-              <h3 class="blue-text text-darken-3">This is our big Tagline!</h3>
+              <h3 class="yellow-text text-darken-3" style="font-weight: bold">This is our big Tagline!</h3>
               <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
             </div>
           </li>
           <li>
             <img src="{{asset('assets/img/slider/2.jpg')}}">
             <div class="caption left-align">
-              <h3 class="blue-text text-darken-3">This is our big Tagline!</h3>
+              <h3 class="yellow-text text-darken-3" style="font-weight: bold">This is our big Tagline!</h3>
               <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
             </div>
           </li>
           <li>
             <img src="{{asset('assets/img/slider/3.jpg')}}">
             <div class="caption center-align">
-              <h3 class="blue-text text-darken-3">This is our big Tagline!</h3>
+              <h3 class="yellow-text text-darken-3" style="font-weight: bold">This is our big Tagline!</h3>
               <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
             </div>
           </li>
@@ -77,7 +75,7 @@
       <section id="about" class="about scrollspy">
       <div class="container">
         <div class="row">
-          <h3 class="center light grey-text text-darken-3">About Us</h3>
+          <h3 class="center light grey-text text-darken-3" style="font-weight: bold">About Us</h3>
           <div class="col m6 light">
             <h5>HISTORY</h5>
             <p>Didirikan pada tanggal 15 Februari 1995 oleh Yayasan Kas Pembangunan untuk memenuhi kebutuhan rumah untuk masyarakat surabaya khususnya Aparatur Sipil Negara (ASN) Kota Surabaya yang belum memiliki rumah. </p>
@@ -119,7 +117,7 @@
         <div class="parallax"><img src="{{asset('assets/img/slider/2.png')}}"></div>
         <div class="container produk">
           <div class="row">
-            <h3 class="center light black-text text-darken-3">Portofolio</h3>
+            <h3 class="center light black-text text-darken-3" style="font-weight: bold">Portofolio</h3>
             <div class="col m12 light">
               <div class="card-panel">
                 <div class="row">
@@ -152,7 +150,7 @@
       <section id="product" class="product scrollspy grey lighten-1">
       <div class="container">
         <div class="row">
-          <h3 class="center light white-text text-darken-3">Available Now</h3>
+          <h3 class="center light white-text text-darken-3" style="font-weight: bold">Available Now</h3>
           <div class="col m12 light">
             <div class="card-panel">
               <h5 class="center">ECO MEDAYU</h5>
@@ -177,7 +175,7 @@
       <!-- footer -->
       <footer class="teal darken-3 white-text" id="contact">
           <div class="row">
-            <h3 class="center light text-darken-3">Contact Us</h3>
+            <h3 class="center light text-darken-3" style="font-weight: bold">Contact Us</h3>
           </div>
           <div class="container">
             <div class="row">
@@ -204,7 +202,10 @@
       </footer>
 
       <!--JavaScript at end of body for optimized loading-->
-      <script src="{{asset('assets/js/materialize.min.js')}}" type="text/javascript"></script>
+      <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <!-- <script src="{{asset('assets/js/materialize.min.js')}}" type="text/javascript"></script> -->
+      <script src="{{asset('assets/js/materialize.js')}}" type="text/javascript"></script>
+      <!-- <script src="{{asset('assets/js/init.js')}}" type="text/javascript"></script> -->
       <script type="text/javascript">
         const sideNav = document.querySelectorAll('.sidenav');
         M.Sidenav.init(sideNav);
@@ -213,13 +214,8 @@
         M.Slider.init(slider, {
           indicators: false,
           height: 500,
-          transition: 600,
-          interval: 3000
-        });
-
-        const carousel = document.querySelectorAll('.carousel');
-        M.Carousel.init(carousel, {
-          fullWidth: true
+          transition: 300,
+          interval: 4000
         });
 
         const parallax = document.querySelectorAll('.parallax');

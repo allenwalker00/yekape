@@ -13,7 +13,9 @@
 
 // LOGIN PAGE
 Route::group(['namespace' => 'Auth'], function() {
-    Route::get('/', ['uses' => 'LoginController@showLoginForm', 'as' => 'login']);
+    Route::get('/', ['uses' => 'HomeController@link', 'as' => 'home-link']);
+    // Route::get('/', ['uses' => 'LoginController@showLoginForm', 'as' => 'login']);
+    Route::get('/admin', ['uses' => 'LoginController@showLoginForm', 'as' => 'login']);
     Route::post('login', ['uses' => 'LoginController@login', 'as' => 'login-post']);
     Route::get('logout', ['uses' => 'LoginController@logout', 'as' => 'logout']);
 });
@@ -32,7 +34,6 @@ Route::get('token', function () {
 Route::group(['middleware' => ['auth']], function(){
 
     Route::get('dashboard', ['uses' => 'BaseController@dashboardLink', 'as' => 'dashboard-link']);
-    Route::post('kec-bykab', ['uses' => 'BaseController@kec_bykab', 'as' => 'kec-bykab']);
 
     // Master Seleb
     Route::get('seleb/{id?}', ['uses' => 'master\SelebController@link', 'as' => 'seleb-link']);
@@ -195,5 +196,3 @@ Route::post('lokasi-bycluster', ['uses' => 'PendaftaranController@lokasi_byclust
 Route::post('lokasi-byletak', ['uses' => 'PendaftaranController@lokasi_byletak', 'as' => 'lokasi-byletak']);
 Route::post('lokasi-bytipe', ['uses' => 'PendaftaranController@lokasi_bytipe', 'as' => 'lokasi-bytipe']);
 Route::post('lokasi-byblok', ['uses' => 'PendaftaranController@lokasi_byblok', 'as' => 'lokasi-byblok']);
-
-Route::get('home/{id?}', ['uses' => 'HomeController@link', 'as' => 'home-link']);
