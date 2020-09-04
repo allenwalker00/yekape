@@ -50,22 +50,22 @@
           <li>
             <img src="{{asset('assets/img/slider/1.jpg')}}">
             <div class="caption right-align">
-              <h3 class="yellow-text text-darken-3" style="font-weight: bold">This is our big Tagline!</h3>
-              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+              <h3 class="yellow-text text-darken-3" style="font-weight: bold; font-size: 36px">Rumah dengan lingkungan baik</h3>
+              <h5 class="black-text text-lighten-3" style="text-shadow: 2px 2px 8px #FBB124; font-size: 18px">Rumah yang baik harus memiliki lingkungan yang baik juga,<br>bukan rumah yang berdiri sendiri tanpa ada keharmonisan dengan sekitarnya.</h5>
             </div>
           </li>
           <li>
             <img src="{{asset('assets/img/slider/2.jpg')}}">
             <div class="caption left-align">
-              <h3 class="yellow-text text-darken-3" style="font-weight: bold">This is our big Tagline!</h3>
-              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+              <h3 class="yellow-text text-darken-3" style="font-weight: bold; font-size: 36px">Rumah yang menyambut kaum muda dan tua</h3>
+              <h5 class="black-text text-lighten-3" style="text-shadow: 2px 2px 8px #FBB124; font-size: 18px">Rumah yang baik untuk semua penghuni. Mulai dari bayi yang baru lahir sampai kakek nenek,<br>dari tamu sampai anak-anak yang berkeliaran ke sana kemari.</h5>
             </div>
           </li>
           <li>
             <img src="{{asset('assets/img/slider/3.jpg')}}">
             <div class="caption center-align">
-              <h3 class="yellow-text text-darken-3" style="font-weight: bold">This is our big Tagline!</h3>
-              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+              <h3 class="yellow-text text-darken-3" style="font-weight: bold; font-size: 36px">Rumah yang menandai waktu</h3>
+              <h5 class="black-text text-lighten-3" style="text-shadow: 2px 2px 8px #FBB124; font-size: 18px">Rumah yang baik harus memperlihatkan perubahan waktu atau musim yang sedang berlangsung.</h5>
             </div>
           </li>
         </ul>
@@ -215,7 +215,7 @@
           indicators: false,
           height: 500,
           transition: 300,
-          interval: 4000
+          interval: 6000
         });
 
         const parallax = document.querySelectorAll('.parallax');
