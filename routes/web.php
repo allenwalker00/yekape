@@ -25,6 +25,10 @@ Route::get('log', function () {
     return view('public_layout');
 });
 
+Route::get('welcome', function () {
+    return view('welcome');
+});
+
 Route::get('token', function () {
     // echo getToken();
     $data = \App\Models\RuangTrans::with('ruang')->get();

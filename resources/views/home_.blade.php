@@ -1,290 +1,235 @@
-<!DOCTYPE html>
-<html lang="en">
+ <!DOCTYPE html>
+<html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-    <title>Materialize Social</title>
+      <link href="{{asset('assets/css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection" />
+      <link href="{{asset('assets/css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection" />
+      <link rel="stylesheet" href="{{asset('assets/css/materialize-social.css')}}">
+      
+      <!-- my css -->
+      <link href="{{asset('assets/css/myStyle.css')}}" rel="stylesheet" type="text/css"/>
+      <link rel="shortcut icon" href="{{asset('assets/lg-original.png')}}" />
 
-    <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>PT Yekape Surabaya</title>
+    </head>
 
-    <link href="{{asset('assets/css/materialize.min.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{asset('assets/css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="{{asset('assets/css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link rel="stylesheet" href="{{asset('assets/css/materialize-social.css')}}">
-</head>
-
-<body>
-    <nav class="light-blue lighten-1" role="navigation">
-        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Materialize-Social</a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="https://github.com/TerryMooreII/materialize-social">Github</a></li>
-                <li><a href="https://twitter.com/terrymooreii">Twitter</a></li>
-            </ul>
-
-            <ul id="nav-mobile" class="side-nav">
-                <li><a href="#">Navbar Link</a></li>
-            </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-        </div>
-    </nav>
-    <div class="section no-pad-bot" id="index-banner">
-        <div class="container">
-            <br><br>
-            <h1 class="header center orange-text">Materialize Social</h1>
-            <div class="row center">
-                <h5 class="header col s12 light">Social Login Buttons for Materailize CSS with Font-Awesome</h5>
+    <body id="home" class="scrollspy">
+      <div class="navbar-fixed">
+        <nav class="teal darken-3">
+          <div class="container">
+            <div class="nav-wrapper">
+              <a href="{{url('/admin')}}" class="brand-logo responsive" style="font-size: 100%;">PT. Yekape Surabaya</a>
+              <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#portofolio">Portofolio</a></li>
+                <li><a href="#product">Product</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+              </ul>
             </div>
-            <div class="row center">
-                <a href="https://github.com/TerryMooreII/materialize-social" id="download-button" class="btn-large waves-effect waves-light orange">View Code on Github</a>
-            </div>
-            <br>
-            <hr>
-            <br>
-            <h6 class="header col s12 light info">
-              Just add either the <code>.social</code> or <code>.social-icon</code> to any <a href="http://materializecss.com/buttons.html">Materialize</a> button along with the auth providers class and BAM!
-              Instant login buttons.
-            </h5>
-            <br><br>
-        </div>
-    </div>
-
-
-    <div class="container">
-        <div class="section">
-
-            <!--   Icon Section   -->
-            <div class="row">
-                <div class="col s12 m4 all"></div>
-
-                <div class="col s12 m8 examples">
-                  <ul class="collection with-header">
-                  <li class="collection-header"><h4>Examples</h4></li>
-
-                  <li class="collection-item">
-
-                    <a class="waves-effect waves-light btn social google"><i class="fa fa-google"></i> Sign in with Google</a>
-                    <pre>
-                      <code>
-&#x3C;a class=&#x22;waves-effect waves-light btn social google&#x22;&#x3E;
-&#x3C;i class=&#x22;fa fa-google&#x22;&#x3E;&#x3C;/i&#x3E; Sign in with Google&#x3C;/a&#x3E;
-                      </code>
-                    </pre>
-                  </li>
-                  <li class="collection-item">
-
-                    <a class="waves-effect waves-light btn-large social google"><i class="fa fa-google"></i> Sign in with Google</a>
-                    <pre>
-                      <code>
-&#x3C;a class=&#x22;waves-effect waves-light btn-large social google&#x22;&#x3E;
-&#x3C;i class=&#x22;fa fa-google&#x22;&#x3E;&#x3C;/i&#x3E; Sign in with Google&#x3C;/a&#x3E;
-                      </code>
-                    </pre>
-                  </li>
-                  <li class="collection-item row">
-
-                    <div class="row">
-                      <a class="waves-effect waves-light btn col s12 social google"><i class="fa fa-google"></i> Sign in with Google</a>
-                    </div>
-                    <pre>
-                      <code>
-&#x3C;div class=&#x22;row&#x22;&#x3E;
-  &#x3C;a class=&#x22;waves-effect waves-light btn col s12 social google&#x22;&#x3E;
-  &#x3C;i class=&#x22;fa fa-google&#x22;&#x3E;&#x3C;/i&#x3E; Sign in with Google&#x3C;/a&#x3E;
-&#x3C;/div&#x3E;
-
-                      </code>
-                    </pre>
-                  </li>
-                  <li class="collection-item">
-
-                    <a class="waves-effect waves-light btn-floating social google"><i class="fa fa-google"></i> Sign in with Google</a>
-                    <pre>
-                      <code>
-&#x3C;a class=&#x22;waves-effect waves-light btn-floating social google&#x22;&#x3E;
-&#x3C;i class=&#x22;fa fa-google&#x22;&#x3E;&#x3C;/i&#x3E; Sign in with Google&#x3C;/a&#x3E;
-                      </code>
-                    </pre>
-                  </li>
-                  <li class="collection-item">
-
-                    <a class="waves-effect waves-light btn-floating btn-large social google"><i class="fa fa-google"></i> Sign in with Google</a>
-                    <pre>
-                      <code>
-&#x3C;a class=&#x22;waves-effect waves-light btn-floating btn-large social google&#x22;&#x3E;
-&#x3C;i class=&#x22;fa fa-google&#x22;&#x3E;&#x3C;/i&#x3E; Sign in with Google&#x3C;/a&#x3E;
-                      </code>
-                    </pre>
-                  </li>
-                  <li class="collection-item">
-
-                    <a class="waves-effect waves-light social-icon btn google"><i class="fa fa-google"></i></a>
-                    <pre>
-                      <code>
-&#x3C;a class=&#x22;waves-effect waves-light social-icon btn google&#x22;&#x3E;
-&#x3C;i class=&#x22;fa fa-google&#x22;&#x3E;&#x3C;/i&#x3E;&#x3C;/a&#x3E;
-                      </code>
-                    </pre>
-                  </li>
-                  <li class="collection-item">
-
-                    <a class="waves-effect waves-light social-icon btn-large google"><i class="fa fa-google"></i></a>
-                    <pre>
-                      <code>
-&#x3C;a class=&#x22;waves-effect waves-light social-icon btn-large google&#x22;&#x3E;
-&#x3C;i class=&#x22;fa fa-google&#x22;&#x3E;&#x3C;/i&#x3E;&#x3C;/a&#x3E;
-                      </code>
-                    </pre>
-                  </li>
-                  <li class="collection-item">
-                    <h6>See bottom corner of the screen</h6>
-                    <div class="fixed-action-btn horizontal click-to-toggle">
-                        <a class="btn-floating btn-large red">
-                            <i class="material-icons">menu</i>
-                        </a>
-                        <ul>
-                            <li>
-                                <a class="waves-effect waves-light btn-floating social google"><i class="fa fa-google"></i></a>
-                            </li>
-                            <li>
-                                <a class="waves-effect waves-light btn-floating facebook"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a class="waves-effect waves-light btn-floating github"><i class="fa fa-github"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <pre>
-                      <code>
-&#x3C;div class=&#x22;fixed-action-btn horizontal click-to-toggle&#x22;&#x3E;
-  &#x3C;a class=&#x22;btn-floating btn-large red&#x22;&#x3E;
-      &#x3C;i class=&#x22;material-icons&#x22;&#x3E;menu&#x3C;/i&#x3E;
-  &#x3C;/a&#x3E;
-  &#x3C;ul&#x3E;
-      &#x3C;li&#x3E;
-          &#x3C;a class=&#x22;waves-effect waves-light btn-floating social google&#x22;&#x3E;&#x3C;i class=&#x22;fa fa-google&#x22;&#x3E;&#x3C;/i&#x3E;&#x3C;/a&#x3E;
-      &#x3C;/li&#x3E;
-      &#x3C;li&#x3E;
-          &#x3C;a class=&#x22;waves-effect waves-light btn-floating facebook&#x22;&#x3E;&#x3C;i class=&#x22;fa fa-facebook&#x22;&#x3E;&#x3C;/i&#x3E;&#x3C;/a&#x3E;
-      &#x3C;/li&#x3E;
-      &#x3C;li&#x3E;
-          &#x3C;a class=&#x22;waves-effect waves-light btn-floating github&#x22;&#x3E;&#x3C;i class=&#x22;fa fa-github&#x22;&#x3E;&#x3C;/i&#x3E;&#x3C;/a&#x3E;
-      &#x3C;/li&#x3E;
-  &#x3C;/ul&#x3E;
-&#x3C;/div&#x3E;
-                      </code>
-                    </pre>
-                  </li>
-                </ul>
-                </div>
-            </div>
-
-        </div>
-        <br><br>
-
-        <div class="section">
-            <h4 class="header col s12 light center-align">How to use</h4>
-            <ol>
-                <li>
-                    <h5 class="header col s12 light">Include Materialize CSS and Font Awesome</h5>
-                    <p>If you haven't done that already, include the latest Materialize CSS and Font Awesome in your project.</p>
-                </li>
-                <li>
-                    <h5 class="header col s12 light">Get the CSS and LESS</h5>
-                    <p>
-                        <pre>
-npm install --save materialize-social
-                        </pre>
-                        <pre>
-bower install --save materialize-social
-                        </pre>
-                    </p>
-                </li>
-                <li>
-                    <h5 class="header col s12 light">Include the CSS or Less</h5>
-                    <p>You have two options for enabling the social buttons in your project: vanilla CSS or source Less. For vanilla CSS, just include the <code>materialize-social.css</code> file into your project.
-
-For Less, copy the <code>materialize-social.less</code> into your existing styles directory and import it into your base less file with <code>@import "materialize-social.less";</code>. Recompile when ready.</p>
-                </li>
-                <li>
-                    <h5 class="header col s12 light">Add some buttons!</h5>
-                    <p>See above for examples</p>
-                </li>
-            </ol>
-        </div>
-    </div>
-
-    <div class="row">
-      <div class="col s12">
-        <h5 class="center-align header light">
-        Special thanks to <a href="http://lipis.github.io/bootstrap-social/">Bootstrap Social</a> for the inspiration!
-        </h5>
+          </div>
+        </nav>
       </div>
-    </div>
 
-    <footer class="page-footer orange">
-        <div class="footer-copyright">
-            <div class="container">
-                Made by <a class="orange-text text-lighten-3" href="https://twitter.com/terrymooreii">Terry Moore II</a>
+      <!-- sidenav -->
+      <ul class="sidenav" id="mobile-nav">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#portofolio">Portofolio</a></li>
+        <li><a href="#product">Product</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+
+      <!-- slider -->
+      <div class="slider">
+        <ul class="slides">
+          <li>
+            <img src="{{asset('assets/img/slider/1.jpg')}}">
+            <div class="caption right-align">
+              <h3 class="yellow-text text-darken-3" style="font-weight: bold; font-size: 36px">Rumah dengan lingkungan baik</h3>
+              <h5 class="black-text text-lighten-3" style="text-shadow: 2px 2px 8px #FBB124; font-size: 18px">Rumah yang baik harus memiliki lingkungan yang baik juga,<br>bukan rumah yang berdiri sendiri tanpa ada keharmonisan dengan sekitarnya.</h5>
             </div>
+          </li>
+          <li>
+            <img src="{{asset('assets/img/slider/2.jpg')}}">
+            <div class="caption left-align">
+              <h3 class="yellow-text text-darken-3" style="font-weight: bold; font-size: 36px">Rumah yang menyambut kaum muda dan tua</h3>
+              <h5 class="black-text text-lighten-3" style="text-shadow: 2px 2px 8px #FBB124; font-size: 18px">Rumah yang baik untuk semua penghuni. Mulai dari bayi yang baru lahir sampai kakek nenek,<br>dari tamu sampai anak-anak yang berkeliaran ke sana kemari.</h5>
+            </div>
+          </li>
+          <li>
+            <img src="{{asset('assets/img/slider/3.jpg')}}">
+            <div class="caption center-align">
+              <h3 class="yellow-text text-darken-3" style="font-weight: bold; font-size: 36px">Rumah yang menandai waktu</h3>
+              <h5 class="black-text text-lighten-3" style="text-shadow: 2px 2px 8px #FBB124; font-size: 18px">Rumah yang baik harus memperlihatkan perubahan waktu atau musim yang sedang berlangsung.</h5>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- About Us -->
+      <section id="about" class="about scrollspy">
+      <div class="container">
+        <div class="row">
+          <h3 class="center light grey-text text-darken-3" style="font-weight: bold">About Us</h3>
+          <div class="col m6 light">
+            <h5>HISTORY</h5>
+            <p>Didirikan pada tanggal 15 Februari 1995 oleh Yayasan Kas Pembangunan untuk memenuhi kebutuhan rumah untuk masyarakat surabaya khususnya Aparatur Sipil Negara (ASN) Kota Surabaya yang belum memiliki rumah. </p>
+            <p>Seiring berjalannya waktu PT. Yekape saat ini bergerak dengan cakupan yang lebih luas lagi di bidang perumahan untuk Masyarakat Umum terkait kebutuhan rumah dengan Pelayanan Terbaik.</p>
+            <h5>VISI</h5>
+            <p>Menjadi Perusahaan Pengembang yang berkualitas di Kotamadya Surabaya.</p>
+          </div>
+           <div class="col m6 light">
+            <h5>MISI</h5>
+            <table border="0" class="striped responsive">
+              <tr>
+                <td>1</td>
+                <td>Mengembangkan tipe rumah yang terjangkau lapisan masyarakat.</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Memberikan pelayanan yang mudah dan transparansi.</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Menjaga kualitas pelayanan administrasi.</td>
+              </tr>
+               <tr>
+                <td>4</td>
+                <td>Menjaga kualitas hunian hasil pekerjaan.</td>
+              </tr>
+               <tr>
+                <td>5</td>
+                <td>Menerapkan Sistem Manajemen Mutu ISO 9001:2008 di semua kegiatan operasional perusahaan dan senantiasa melakukan improvement.</td>
+              </tr>
+            </table>
+          </div>
         </div>
-    </footer>
+      </div>
+      </section>
 
+      <!-- Portofolio -->
+      <div class="portofolio parallax-container scrollspy" id="portofolio">
+        <div class="parallax"><img src="{{asset('assets/img/slider/2.png')}}"></div>
+        <div class="container produk">
+          <div class="row">
+            <h3 class="center light black-text text-darken-3" style="font-weight: bold">Portofolio</h3>
+            <div class="col m12 light">
+              <div class="card-panel">
+                <div class="row">
+                  <div class="col m6 light">
+                    <h5>Taman Rivera</h5>
+                    <p>Didirikan pada tanggal 15 Februari 1995 oleh Yayasan Kas Pembangunan untuk memenuhi kebutuhan rumah untuk masyarakat surabaya khususnya Aparatur Sipil Negara (ASN) Kota Surabaya yang belum memiliki rumah. </p>
+                  </div>
+                  <div class="col m6 light">
+                    <img src="{{asset('assets/img/portfolio/1.jpg')}}" class="responsive-img">
+                  </div>
+                </div>
+              </div>
+              <div class="card-panel">
+                <div class="row">
+                  <div class="col m6 light">
+                    <img src="{{asset('assets/img/portfolio/1.jpg')}}" class="responsive-img">
+                  </div>
+                  <div class="col m6 light">
+                    <h5>Taman Rivera</h5>
+                    <p>Didirikan pada tanggal 15 Februari 1995 oleh Yayasan Kas Pembangunan untuk memenuhi kebutuhan rumah untuk masyarakat surabaya khususnya Aparatur Sipil Negara (ASN) Kota Surabaya yang belum memiliki rumah. </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/materialize.js"></script>
-    <script src="js/init.js"></script>
+      <!-- Produk -->
+      <section id="product" class="product scrollspy grey lighten-1">
+      <div class="container">
+        <div class="row">
+          <h3 class="center light white-text text-darken-3" style="font-weight: bold">Available Now</h3>
+          <div class="col m12 light">
+            <div class="card-panel">
+              <h5 class="center">ECO MEDAYU</h5>
+              <p>Didirikan pada tanggal 15 Februari 1995 oleh Yayasan Kas Pembangunan untuk memenuhi kebutuhan rumah untuk masyarakat surabaya khususnya Aparatur Sipil Negara (ASN) Kota Surabaya yang belum memiliki rumah. </p>
+              <div class="row">
+                <div class="col m4 s12">
+                  <img src="{{asset('assets/img/portfolio/1.jpg')}}" class="responsive-img materialboxed">
+                </div>
+                <div class="col m4 s12">
+                  <img src="{{asset('assets/img/portfolio/2.jpg')}}" class="responsive-img materialboxed">
+                </div>
+                <div class="col m4 s12">
+                  <img src="{{asset('assets/img/portfolio/3.jpg')}}" class="responsive-img materialboxed">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </section>
 
-    <script type="text/javascript">
-        var social = [
-            'adn',
-            'bitbucket',
-            'dropbox',
-            'facebook',
-            'flickr',
-            'foursquare',
-            'github',
-            'google',
-            'instagram',
-            'linkedin',
-            'windows ',
-            'odnoklassniki',
-            'openid',
-            'pinterest',
-            'reddit',
-            'soundcloud',
-            'tumblr',
-            'twitter',
-            'vimeo',
-            'vk',
-            'yahoo'
-        ]
-        var buttons = '';
-        $.each(social, function(index, network) {
-            buttons += '<div class="row usage '+network+'"><a class="waves-effect waves-light btn social col s12 ' + network + '"><i class="fa fa-fw fa-' + network + '"></i> Sign in with ' + network + '</a></div>'
+      <!-- footer -->
+      <footer class="teal darken-3 white-text" id="contact">
+          <div class="row">
+            <h3 class="center light text-darken-3" style="font-weight: bold">Contact Us</h3>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col m4 s12 center">
+                <p style="margin-bottom: 0; font-weight: bold">Our Office :</p>
+                Jalan Wijaya Kusuma No.36 Surabaya
+                <p style="margin-bottom: 0; font-weight: bold">Telp :</p>
+                (031) 3222 1234
+              </div>
+              <div class="col m4 s12 center center-align">
+                <img alt="Logo" src="{{asset('assets/lg-original.png')}}" height="150" />
+              </div>
+              <div class="col m4 s12" style="text-align: center">
+                <p style="margin-bottom: 0; font-weight: bold">Email :</p>
+                yekape.sby@gmail.com
+                <p style="margin-bottom: 0; font-weight: bold">Connect with us :</p>
+                <p>
+                <a href="https://www.instagram.com/yekapesurabaya/" class="waves-effect waves-light btn-floating social instagram social-icon" target="_blank"><i class="fa fa-instagram"></i> Sign in with instagram</a>
+                <a href="https://www.instagram.com/yekapesurabaya/" class="waves-effect waves-light btn-floating social facebook social-icon" target="_blank"><i class="fa fa-facebook"></i> Sign in with instagram</a>
+                <p>
+              </div>
+            </div>
+          </div>
+      </footer>
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <!-- <script src="{{asset('assets/js/materialize.min.js')}}" type="text/javascript"></script> -->
+      <script src="{{asset('assets/js/materialize.js')}}" type="text/javascript"></script>
+      <!-- <script src="{{asset('assets/js/init.js')}}" type="text/javascript"></script> -->
+      <script type="text/javascript">
+        const sideNav = document.querySelectorAll('.sidenav');
+        M.Sidenav.init(sideNav);
+
+        const slider = document.querySelectorAll('.slider');
+        M.Slider.init(slider, {
+          indicators: false,
+          height: 500,
+          transition: 300,
+          interval: 6000
         });
-        $('.all').html(buttons);
+
+        const parallax = document.querySelectorAll('.parallax');
+        M.Parallax.init(parallax);
+
+        const materialbox = document.querySelectorAll('.materialboxed');
+        M.Materialbox.init(materialbox);
+
+        const scroll = document.querySelectorAll('.scrollspy');
+        M.ScrollSpy.init(scroll, {
+          scrollOffset: 60
+        });
 
 
-        var current = 'google';
-        $('.usage').on('mouseenter', function(){
-          var icon = $(this).attr('class').replace('row usage ', '');
-
-          var regex = new RegExp(current, "gi");
-          $('.examples').html(function(index, html){
-            return html.replace(regex, icon);
-          });
-          current = icon;
-        })
-
-
-        //$('.example').html(html)
-
-    </script>
-
-</body>
-
-</html>
+      </script>
+    </body>
+  </html>
