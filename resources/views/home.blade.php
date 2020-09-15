@@ -756,7 +756,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <script src="{{asset('assets/plugins/jquery.easing.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/plugins/jquery.parallax.js')}}" type="text/javascript"></script>
-<!-- <script src="{{asset('assets/plugins/smooth-scroll/smooth-scroll.js')}}" type="text/javascript"></script> -->
+<script src="{{asset('assets/plugins/smooth-scroll/smooth-scroll.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/plugins/owl.carousel/owl.carousel.min.js')}}" type="text/javascript"></script>
 <!-- BEGIN CUBEPORTFOLIO -->
 <script src="{{asset('assets/plugins/cubeportfolio/cubeportfolio/js/jquery.cubeportfolio.min.js')}}" type="text/javascript"></script>
