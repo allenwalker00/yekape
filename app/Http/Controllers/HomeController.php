@@ -8,6 +8,6 @@ class HomeController extends Controller
 {
     public function link($id = null)
     {
-        return view('home');
+        return view('index');
     }
 }
